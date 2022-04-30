@@ -7,7 +7,7 @@ const count = ref(0);
 </script>
 
 <template>
-  <ul class="bg-white border border-gray-200 rounded-3xl">
+  <ul class="bg-white border border-gray-200 rounded-3xl drop-shadow-md">
     <li
       class="flex p-3 border-b border-gray-200 fist:rounded-t-lg last:border-0 last:rounded-b-lg"
     >
