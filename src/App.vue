@@ -2,11 +2,14 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import Radios from "./components/Radios.vue";
+import Player from "./components/Player.vue";
+import Heading from "./components/Heading.vue";
 </script>
 
 <template>
   <div class="container mx-auto max-w-xs rounded-3xl">
     <Heading></Heading>
+    <Player></Player>
     <Radios></Radios>
   </div>
 </template>

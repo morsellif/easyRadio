@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import Radio from "./Radio.vue";
 import radios from "./../assets/radios.json";
-import { ref } from "vue";
-
-const count = ref(0);
 </script>
 
 <template>
@@ -13,7 +10,11 @@ const count = ref(0);
     >
       <div class="font-bold text-3xl">Radios</div>
     </li>
-    <Radio v-for="(radio, index) in radios" :name="index"></Radio>
+    <Radio
+      class="cursor-pointer"
+      v-for="(radio, index) in radios"
+      :name="index"
+    ></Radio>
   </ul>
 </template>
 
