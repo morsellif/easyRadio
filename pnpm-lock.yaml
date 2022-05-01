@@ -4,6 +4,7 @@ specifiers:
   '@tailwindcss/typography': ^0.5.2
   '@vitejs/plugin-vue': ^2.3.1
   autoprefixer: ^10.4.5
+  hls.js: ^1.1.5
   postcss: ^8.4.13
   tailwindcss: ^3.0.24
   typescript: ^4.5.4
@@ -12,6 +13,7 @@ specifiers:
   vue-tsc: ^0.34.7
 
 dependencies:
+  hls.js: 1.1.5
   vue: 3.2.33
 
 devDependencies:
@@ -591,6 +593,10 @@ packages:
     dependencies:
       function-bind: 1.1.1
     dev: true
+
+  /hls.js/1.1.5:
+    resolution: {integrity: sha512-mQX5TSNtJEzGo5HPpvcQgCu+BWoKDQM6YYtg/KbgWkmVAcqOCvSTi0SuqG2ZJLXxIzdnFcKU2z7Mrw/YQWhPOA==}
+    dev: false
 
   /is-binary-path/2.1.0:
     resolution: {integrity: sha512-ZMERYes6pDydyuGidse7OsHxtbI7WVeUEozgR/g7rd0xUimYNlvZRE/K2MgZTjWy725IfelLeVcEM97mmtRGXw==}
