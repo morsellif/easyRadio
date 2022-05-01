@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import PlayerControls from "./PlayerControls.vue";
 import Logo from "./Logo.vue";
 </script>
 
@@ -7,9 +6,13 @@ import Logo from "./Logo.vue";
   <div
     class="bg-white border border-gray-200 rounded-3xl drop-shadow-md mb-4 p-4"
   >
-    <div class="flex bg-white border-1">
-      <div class=""><Logo></Logo></div>
-      <div class="font-bold text-3xl text-center">easyRadio</div>
+    <div class="flex flex-column bg-white border-1">
+      <div class="pr-4 align-middle"><Logo></Logo></div>
+      <div
+        class="inline-block align-middle grow self-center font-bold text-3xl"
+      >
+        easyRadio
+      </div>
     </div>
   </div>
 </template>
