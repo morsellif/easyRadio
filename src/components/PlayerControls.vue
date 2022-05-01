@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import Play from "./Play.vue";
-import Pause from "./Pause.vue";
+import Play from "./icons/Play.vue";
+import Pause from "./icons/Pause.vue";
 
 const playing = ref(false);
 </script>

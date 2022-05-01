@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import Loved from "./Loved.vue";
-import NotLoved from "./NotLoved.vue";
+import Loved from "./icons/Loved.vue";
+import NotLoved from "./icons/NotLoved.vue";
 import { ref } from "vue";
 
 const loved = ref(false);
