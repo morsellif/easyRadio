@@ -6,11 +6,41 @@ import Player from "./components/Player.vue";
 import Heading from "./components/Heading.vue";
 </script>
 
+<script lang="ts">
+export default {
+  data() {
+    return {
+      currentlyListeningData: {
+        radioName: "",
+        streamUrl: "",
+        type: "",
+      },
+    };
+  },
+  methods: {
+    currentlyListening(e: {
+      radioName: string;
+      streamUrl: string;
+      type: string;
+    }) {
+      this.currentlyListeningData.radioName = e.radioName;
+      this.currentlyListeningData.streamUrl = e.streamUrl;
+      this.currentlyListeningData.type = e.type;
+    },
+  },
+};
+</script>
+
 <template>
+  <audio id="playme"></audio>
   <div class="container mx-auto max-w-xs rounded-3xl">
     <Heading></Heading>
-    <Player></Player>
-    <Radios></Radios>
+    <Player
+      :radioName="currentlyListeningData.radioName"
+      :streamUrl="currentlyListeningData.streamUrl"
+      :type="currentlyListeningData.type"
+    ></Player>
+    <Radios v-on:listen="currentlyListening"></Radios>
   </div>
 </template>
 

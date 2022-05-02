@@ -15,8 +15,8 @@ export default {
     };
   },
   methods: {
-    listen(radioName: String, streamUrl: String) {
-      this.$emit("listen", { radioName, streamUrl });
+    listen(radioName: string, streamUrl: string, type: string) {
+      this.$emit("listen", { radioName, streamUrl, type });
     },
     isLoved(radioName: string) {
       return (
@@ -67,7 +67,7 @@ export default {
     </li>
     <Radio
       v-on:lovedRadio="loveGateway(index)"
-      v-on:listenRadio="listen(index, radio.streamUrl)"
+      v-on:listenRadio="listen(index, radio.streamUrl, radio.type)"
       class="cursor-pointer"
       v-for="(radio, index) in radios"
       :isLoved="isLoved(index)"

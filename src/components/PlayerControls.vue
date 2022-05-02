@@ -3,10 +3,10 @@ import { ref } from "vue";
 import Play from "./icons/Play.vue";
 import Pause from "./icons/Pause.vue";
 
-const playing = ref(false);
+defineProps<{ playing: boolean }>();
 </script>
 
 <template>
-  <Pause v-if="playing" @click="playing = !playing"></Pause>
-  <Play v-if="!playing" @click="playing = !playing"></Play>
+  <Pause v-if="playing" class="hover:fill-green-90"></Pause>
+  <Play v-if="!playing" class="hover:fill-green-90"></Play>
 </template>
