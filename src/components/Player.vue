@@ -16,12 +16,13 @@ export default {
       video: null,
       hls: new Hls(),
       playing: true,
-      status: false,
+      isBuffering: false,
     };
   },
   watch: {
     $route(to: any, from: any) {
-      this.status = false;
+      console.log("sono");
+      this.isBuffering = false;
       (this.$refs.media as HTMLMediaElement).pause();
       this.hls.destroy();
       (this.$refs.media as HTMLMediaElement).src = "";
@@ -62,6 +63,12 @@ export default {
       }
     },
   },
+  mounted() {
+    this.playSound(
+      this.$route.params.streamUrl as string,
+      this.$route.params.type as string
+    );
+  },
 };
 </script>
 
@@ -69,9 +76,8 @@ export default {
   <div
     class="bg-white border border-gray-200 rounded-3xl drop-shadow-md mb-4 p-4"
   >
-    <div v-if="status">
+    <div v-if="isBuffering">
       <div class="font-bold text-3xl text-center">{{ radioName }}</div>
-      {{ status }}
       <div class="flex justify-center pt-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -89,9 +95,9 @@ export default {
         <PlayerControls :playing="playing"></PlayerControls>
       </div>
     </div>
-    <PulseLoader v-else></PulseLoader>
+    <PulseLoader class="flex justify-center flex-row pt-2" v-else></PulseLoader>
   </div>
-  <audio ref="media" @canplay="status = true"></audio>
+  <audio ref="media" @canplay="isBuffering = true"></audio>
 </template>
 
 <style></style>

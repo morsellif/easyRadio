@@ -36,7 +36,6 @@ export default {
   <audio id="playme"></audio>
   <div class="container mx-auto max-w-xs rounded-3xl">
     <Heading></Heading>
-    <PlayerPlaceholder></PlayerPlaceholder>
     <router-view name="player"></router-view>
     <Radios v-on:listen="currentlyListening"></Radios>
   </div>
