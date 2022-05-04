@@ -8,8 +8,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@headlessui/vue": "^1.6.0",
     "hls.js": "^1.1.5",
-    "vue": "^3.2.25"
+    "vue": "^3.2.25",
+    "vue-router": "4",
+    "vue-spinner": "^1.0.4"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.2",

@@ -4,6 +4,7 @@
 import Radios from "./components/Radios.vue";
 import Player from "./components/Player.vue";
 import Heading from "./components/Heading.vue";
+import PlayerPlaceholder from "./components/PlayerPlaceholder.vue";
 </script>
 
 <script lang="ts">
@@ -35,11 +36,8 @@ export default {
   <audio id="playme"></audio>
   <div class="container mx-auto max-w-xs rounded-3xl">
     <Heading></Heading>
-    <Player
-      :radioName="currentlyListeningData.radioName"
-      :streamUrl="currentlyListeningData.streamUrl"
-      :type="currentlyListeningData.type"
-    ></Player>
+    <PlayerPlaceholder></PlayerPlaceholder>
+    <router-view name="player"></router-view>
     <Radios v-on:listen="currentlyListening"></Radios>
   </div>
 </template>

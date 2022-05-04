@@ -67,7 +67,16 @@ export default {
     </li>
     <Radio
       v-on:lovedRadio="loveGateway(index)"
-      v-on:listenRadio="listen(index, radio.streamUrl, radio.type)"
+      v-on:listen-radio="
+        $router.push({
+          name: 'play',
+          params: {
+            radioName: index,
+            streamUrl: radio.streamUrl,
+            type: radio.type,
+          },
+        })
+      "
       class="cursor-pointer"
       v-for="(radio, index) in radios"
       :isLoved="isLoved(index)"
