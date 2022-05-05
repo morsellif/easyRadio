@@ -2,9 +2,8 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import Radios from "./components/Radios.vue";
-import Player from "./components/Player.vue";
 import Heading from "./components/Heading.vue";
-import PlayerPlaceholder from "./components/PlayerPlaceholder.vue";
+import Credits from "./components/Credits.vue";
 </script>
 
 <script lang="ts">
@@ -38,6 +37,7 @@ export default {
     <Heading></Heading>
     <router-view name="player"></router-view>
     <Radios v-on:listen="currentlyListening"></Radios>
+    <Credits></Credits>
   </div>
 </template>
 
