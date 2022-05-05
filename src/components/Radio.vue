@@ -6,15 +6,15 @@ defineProps<{ name: string; isLoved: boolean }>();
 
 <template>
   <li
-    class="hover:bg-gray-100 flex p-3 border-b border-gray-200 fist:rounded-t-2xl last:border-0 last:rounded-b-2xl"
+    class="hover:bg-gray-100 flex border-b border-gray-200 fist:rounded-t-2xl last:border-0 last:rounded-b-2xl"
   >
     <div
-      class="font-medium text-xl grow flex flex-row"
+      class="font-medium text-xl grow flex flex-row p-3"
       @click="$emit('listenRadio')"
     >
       {{ name }}
     </div>
-    <div class="flex justify-end flex-row" @click="$emit('lovedRadio')">
+    <div class="flex justify-end flex-row p-3" @click="$emit('lovedRadio')">
       <FavouriteButton :is-loved="isLoved"></FavouriteButton>
     </div>
   </li>
