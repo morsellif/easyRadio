@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import Hls from "hls.js";
 import PlayerControls from "./PlayerControls.vue";
-import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 
 defineProps<{ radioName: string; streamUrl: string; type: string }>();
 </script>

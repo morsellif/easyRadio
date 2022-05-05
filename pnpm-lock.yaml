@@ -12,7 +12,6 @@ specifiers:
   vite: ^2.9.5
   vue: ^3.2.25
   vue-router: '4'
-  vue-spinner: ^1.0.4
   vue-tsc: ^0.34.7
 
 dependencies:
@@ -20,7 +19,6 @@ dependencies:
   hls.js: 1.1.5
   vue: 3.2.33
   vue-router: 4.0.14_vue@3.2.33
-  vue-spinner: 1.0.4
 
 devDependencies:
   '@tailwindcss/typography': 0.5.2_tailwindcss@3.0.24
@@ -917,10 +915,6 @@ packages:
     dependencies:
       '@vue/devtools-api': 6.1.4
       vue: 3.2.33
-    dev: false
-
-  /vue-spinner/1.0.4:
-    resolution: {integrity: sha512-GNG2F+8BLX201JT/jUX+84Gsi3ZteVQwt9K7mues3ts9FcQ95dGn7uu6a5ndSxdYYUEzfh1KngZiOE0u+l4itA==}
     dev: false
 
   /vue-tsc/0.34.11_typescript@4.6.4:
