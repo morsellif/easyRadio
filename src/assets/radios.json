@@ -101,7 +101,7 @@
   "Radio LatteMiele": {
     "type": "mp3",
 
-    "streamUrl": "http://91.121.223.95/proxy/lattemiele?mp=/stream"
+    "streamUrl": "https://sr15.inmystream.it/stream/lattemiele"
   },
   "Radio RDS": {
     "streamUrl": "https://stream.rds.radio/audio/rds.stream_aac/chunklist.m3u8",
@@ -129,8 +129,8 @@
     "type": "m3u8"
   },
   "Radio RTL 102.5": {
-    "type": "mp3",
-    "streamUrl": "http://shoutcast.rtl.it:3010/stream/1/"
+    "type": "m3u8",
+    "streamUrl": "https://dd782ed59e2a4e86aabf6fc508674b59.msvdn.net/audiostream/S97044836/tbbP8T1ZRPBL/playlist_audio.m3u8"
   },
   "Radio Studio Più": {
     "streamUrl": "http://www.studiopiu.net:8010/;stream.nsv",
@@ -150,7 +150,7 @@
     "streamUrl": "https://ice07.fluidstream.net/KissKiss.mp3"
   },
   "Radio Capital": {
-    "streamUrl": "https://radiocapital-lh.akamaihd.net/i/RadioCapital_Live_1@196312/master.m3u8",
+    "streamUrl": "https://4c4b867c89244861ac216426883d1ad0.msvdn.net/radiocapital/radiocapital/master_ma.m3u8",
     "type": "m3u8"
   },
   "Radio Capital Music": {
@@ -162,11 +162,11 @@
     "type": "m3u8"
   },
   "Radio Freccia": {
-    "streamUrl": "https://rtl-radio6-stream-thron.akamaized.net/live/radio6/radio6/playlist.m3u8",
+    "streamUrl": "https://dd782ed59e2a4e86aabf6fc508674b59.msvdn.net/audiostream/S3160845/0tuSetc8UFkF/playlist_audio.m3u8",
     "type": "m3u8"
   },
   "Radio Zeta": {
-    "streamUrl": "https://rtl-radio3-stream-thron.akamaized.net/live/radio3/radio3/playlist.m3u8",
+    "streamUrl": "https://dd782ed59e2a4e86aabf6fc508674b59.msvdn.net/audiostream/S9346184/XEx1LqlYbNic/playlist_audio.m3u8",
     "type": "m3u8"
   },
   "BBC International Service": {
