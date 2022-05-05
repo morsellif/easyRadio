@@ -77,6 +77,10 @@ export default {
           },
         })
       "
+      :class="{
+        'bg-gray-200': this.$route.params.radioName === index,
+        'hover:bg-gray-100': this.$route.params.radioName !== index,
+      }"
       class="cursor-pointer"
       v-for="(radio, index) in radios"
       :isLoved="isLoved(index)"
