@@ -101,7 +101,7 @@
   "Radio LatteMiele": {
     "type": "mp3",
 
-    "streamUrl": "http://91.121.223.95/proxy/lattemiele?mp=/stream"
+    "streamUrl": "https://sr15.inmystream.it/stream/lattemiele"
   },
   "Radio RDS": {
     "streamUrl": "https://stream.rds.radio/audio/rds.stream_aac/chunklist.m3u8",
