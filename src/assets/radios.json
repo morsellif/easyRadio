@@ -121,7 +121,7 @@
     "type": "mp3"
   },
   "Radio Dee Jay": {
-    "streamUrl": "https://radiodeejay-lh.akamaihd.net/i/RadioDeejay_Live_1@189857/master.m3u8",
+    "streamUrl": "https://streamcdnb1-4c4b867c89244861ac216426883d1ad0.msvdn.net/radiodeejay/radiodeejay/master_ma.m3u8",
     "type": "m3u8"
   },
   "Radio 24": {
