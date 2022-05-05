@@ -36,9 +36,7 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-1
-      - name: Select folder
-        run: |
-          cd dist
       - name: Copy files to the production website with the AWS CLI
         run: |
+          cd dist
           aws s3 sync . s3://${{ secrets.BUCKET }}
