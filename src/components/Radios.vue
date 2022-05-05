@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Radio from "./Radio.vue";
+import Dropdown from "./Dropdown.vue";
 import radios from "./../assets/radios.json";
 </script>
 
@@ -63,7 +64,8 @@ export default {
     <li
       class="flex p-3 border-b border-gray-200 fist:rounded-t-lg last:border-0 last:rounded-b-lg"
     >
-      <div class="font-bold text-3xl">Radios</div>
+      <div class="flex font-bold text-3xl grow flex-row">Radios</div>
+      <Dropdown class="flex justify-end"></Dropdown>
     </li>
     <Radio
       v-on:lovedRadio="loveGateway(index)"
