@@ -7,31 +7,6 @@ import {
   RouteLocationRaw,
 } from "vue-router";
 
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-
-import { library } from "@fortawesome/fontawesome-svg-core";
-import {
-  faHeart as faHeartSolid,
-  faRadio,
-  faListUl,
-  faPause,
-  faPlay,
-  faCaretDown,
-  faArrowDownAZ,
-} from "@fortawesome/free-solid-svg-icons";
-import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
-
-library.add(
-  faHeartSolid,
-  faHeartRegular,
-  faRadio,
-  faListUl,
-  faPause,
-  faPlay,
-  faCaretDown,
-  faArrowDownAZ
-);
-
 import Player from "./components/Player.vue";
 import PlayerPlaceholder from "./components/PlayerPlaceholder.vue";
 
@@ -64,5 +39,4 @@ const router = createRouter({
 
 const app = createApp(App);
 app.use(router);
-app.component("font-awesome-icon", FontAwesomeIcon);
 app.mount("#app");
