@@ -1,17 +1,20 @@
 <script setup lang="ts">
 import Radio from "./Radio.vue";
+import Dropdown from "./Dropdown.vue";
 import radios from "./../assets/radios.json";
 </script>
 
 <script lang="ts">
 declare interface ComponentData {
   lovedRadios: string[];
+  filter: string;
 }
 
 export default {
   data(): ComponentData {
     return {
       lovedRadios: [],
+      filter: "All",
     };
   },
   methods: {
@@ -47,13 +50,29 @@ export default {
     save() {
       localStorage.setItem("lovedRadios", JSON.stringify(this.lovedRadios));
     },
+    filterRadios(e) {
+      this.filter = e;
+    },
   },
   mounted() {
     const exists = localStorage.getItem("lovedRadios");
     if (exists) {
       this.lovedRadios = JSON.parse(exists);
     }
-    // TODO: get loved radios from localStorage
+  },
+  computed: {
+    sortByPreferred() {
+      return Object.keys(this.radios).sort((a, b) => {
+        if (this.lovedRadios.includes(a)) {
+          return -1;
+        }
+        if (this.lovedRadios.includes(b)) {
+          return 1;
+        }
+
+        return 0;
+      });
+    },
   },
 };
 </script>
@@ -63,26 +82,49 @@ export default {
     <li
       class="flex p-3 border-b border-gray-200 fist:rounded-t-lg last:border-0 last:rounded-b-lg"
     >
-      <div class="font-bold text-3xl">Radios</div>
+      <div class="flex font-bold text-3xl grow flex-row">Radios</div>
+      <Dropdown @filter="filterRadios" class="flex justify-end"></Dropdown>
     </li>
+
     <Radio
+      v-if="filter === 'All'"
       v-on:lovedRadio="loveGateway(index)"
       v-on:listen-radio="
         $router.push({
           name: 'play',
           params: {
             radioName: index,
-            streamUrl: radio.streamUrl,
-            type: radio.type,
+            streamUrl: radios[index].streamUrl,
+            type: radios[index].type,
           },
         })
       "
-      :class="{
-        'bg-gray-200': $route.params.radioName === index,
-        'hover:bg-gray-100': $route.params.radioName !== index,
-      }"
+      :class="[
+        $route.params.radioName === index ? 'bg-gray-200' : 'hover:bg-gray-100',
+      ]"
       class="cursor-pointer"
-      v-for="(radio, index) in radios"
+      v-for="index in sortByPreferred"
+      :isLoved="isLoved(index)"
+      :name="index"
+    ></Radio>
+    <Radio
+      v-if="filter === 'Preferred'"
+      v-on:lovedRadio="loveGateway(index)"
+      v-on:listen-radio="
+        $router.push({
+          name: 'play',
+          params: {
+            radioName: index,
+            streamUrl: radios[index].streamUrl,
+            type: radios[index].type,
+          },
+        })
+      "
+      :class="[
+        $route.params.radioName === index ? 'bg-gray-200' : 'hover:bg-gray-100',
+      ]"
+      class="cursor-pointer"
+      v-for="index in lovedRadios"
       :isLoved="isLoved(index)"
       :name="index"
     ></Radio>
