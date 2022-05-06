@@ -54,7 +54,20 @@ export default {
     if (exists) {
       this.lovedRadios = JSON.parse(exists);
     }
-    // TODO: get loved radios from localStorage
+  },
+  computed: {
+    sortByPreferred() {
+      return Object.keys(this.radios).sort((a, b) => {
+        if (this.lovedRadios.includes(a)) {
+          return -1;
+        }
+        if (this.lovedRadios.includes(b)) {
+          return 1;
+        }
+
+        return 0;
+      });
+    },
   },
 };
 </script>
@@ -67,6 +80,7 @@ export default {
       <div class="flex font-bold text-3xl grow flex-row">Radios</div>
       <Dropdown class="flex justify-end"></Dropdown>
     </li>
+
     <Radio
       v-on:lovedRadio="loveGateway(index)"
       v-on:listen-radio="
@@ -74,17 +88,16 @@ export default {
           name: 'play',
           params: {
             radioName: index,
-            streamUrl: radio.streamUrl,
-            type: radio.type,
+            streamUrl: radios[index].streamUrl,
+            type: radios[index].type,
           },
         })
       "
-      :class="{
-        'bg-gray-200': $route.params.radioName === index,
-        'hover:bg-gray-100': $route.params.radioName !== index,
-      }"
+      :class="[
+        $route.params.radioName === index ? 'bg-gray-200' : 'hover:bg-gray-100',
+      ]"
       class="cursor-pointer"
-      v-for="(radio, index) in radios"
+      v-for="index in sortByPreferred"
       :isLoved="isLoved(index)"
       :name="index"
     ></Radio>
