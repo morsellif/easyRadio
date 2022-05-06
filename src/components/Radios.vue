@@ -7,12 +7,14 @@ import radios from "./../assets/radios.json";
 <script lang="ts">
 declare interface ComponentData {
   lovedRadios: string[];
+  filter: string;
 }
 
 export default {
   data(): ComponentData {
     return {
       lovedRadios: [],
+      filter: "All",
     };
   },
   methods: {
@@ -48,6 +50,9 @@ export default {
     save() {
       localStorage.setItem("lovedRadios", JSON.stringify(this.lovedRadios));
     },
+    filterRadios(e) {
+      this.filter = e;
+    },
   },
   mounted() {
     const exists = localStorage.getItem("lovedRadios");
@@ -78,10 +83,11 @@ export default {
       class="flex p-3 border-b border-gray-200 fist:rounded-t-lg last:border-0 last:rounded-b-lg"
     >
       <div class="flex font-bold text-3xl grow flex-row">Radios</div>
-      <Dropdown class="flex justify-end"></Dropdown>
+      <Dropdown @filter="filterRadios" class="flex justify-end"></Dropdown>
     </li>
 
     <Radio
+      v-if="filter === 'All'"
       v-on:lovedRadio="loveGateway(index)"
       v-on:listen-radio="
         $router.push({
@@ -98,6 +104,27 @@ export default {
       ]"
       class="cursor-pointer"
       v-for="index in sortByPreferred"
+      :isLoved="isLoved(index)"
+      :name="index"
+    ></Radio>
+    <Radio
+      v-if="filter === 'Preferred'"
+      v-on:lovedRadio="loveGateway(index)"
+      v-on:listen-radio="
+        $router.push({
+          name: 'play',
+          params: {
+            radioName: index,
+            streamUrl: radios[index].streamUrl,
+            type: radios[index].type,
+          },
+        })
+      "
+      :class="[
+        $route.params.radioName === index ? 'bg-gray-200' : 'hover:bg-gray-100',
+      ]"
+      class="cursor-pointer"
+      v-for="index in lovedRadios"
       :isLoved="isLoved(index)"
       :name="index"
     ></Radio>

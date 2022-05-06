@@ -8,6 +8,20 @@ import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
 <script lang="ts">
 export default {
   name: "Dropdown",
+  props: {
+    options: string,
+  },
+  data() {
+    return {
+      filterName: "Filter",
+    };
+  },
+  methods: {
+    filter(filterName: string) {
+      this.filterName = filterName;
+      this.$emit("filter", filterName);
+    },
+  },
 };
 </script>
 
@@ -18,7 +32,7 @@ export default {
         <MenuButton
           class="inline-flex w-full border-gray-500 border justify-center rounded-3xl px-4 py-2 text-sm font-medium text-black hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
         >
-          <div class="text-sm">Filter</div>
+          <div class="text-sm">{{ filterName }}</div>
           <Caret class="w-3 ml-3"></Caret>
         </MenuButton>
       </div>
@@ -37,6 +51,7 @@ export default {
           <div class="px-1 py-1">
             <MenuItem v-slot="{ active }">
               <button
+                @click="filter('Preferred')"
                 :class="{
                   'bg-gray-100': active,
                 }"
@@ -47,6 +62,7 @@ export default {
             </MenuItem>
             <MenuItem v-slot="{ active }">
               <button
+                @click="filter('All')"
                 :class="{
                   'bg-gray-100': active,
                 }"
