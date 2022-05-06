@@ -50,7 +50,7 @@ export default {
     save() {
       localStorage.setItem("lovedRadios", JSON.stringify(this.lovedRadios));
     },
-    filterRadios(e) {
+    filterRadios(e: string) {
       this.filter = e;
     },
   },
@@ -61,8 +61,8 @@ export default {
     }
   },
   computed: {
-    sortByPreferred() {
-      return Object.keys(this.radios).sort((a, b) => {
+    sortByPreferred(): Array<string> {
+      return Object.keys(radios).sort((a, b) => {
         if (this.lovedRadios.includes(a)) {
           return -1;
         }

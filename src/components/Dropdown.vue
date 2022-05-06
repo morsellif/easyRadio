@@ -8,9 +8,6 @@ import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
 <script lang="ts">
 export default {
   name: "Dropdown",
-  props: {
-    options: string,
-  },
   data() {
     return {
       filterName: "Filter",
