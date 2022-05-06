@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Loved from "./icons/Loved.vue";
+import HeartFilled from "./icons/HeartFilled.vue";
 </script>
 
 <template>
@@ -8,7 +9,8 @@ import Loved from "./icons/Loved.vue";
   >
     <div class="flex flex-column bg-white border-1">
       <div class="inline-block align-middle grow self-center font-bold">
-        Made with <Loved class="inline ml-2 mr-2"></Loved> by
+        Made with
+        <HeartFilled class="inline ml-2 mr-2 w-7 fill-red-500"></HeartFilled> by
         <a
           target="_blank"
           class="underline underline-offset-4"

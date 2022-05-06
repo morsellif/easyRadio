@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import Loved from "./icons/Loved.vue";
-import List from "./icons/List.vue";
-import Caret from "./icons/Caret.vue";
+import HeartFilled from "./icons/HeartFilled.vue";
+import ListUl from "./icons/ListUl.vue";
+import CaretDown from "./icons/CaretDown.vue";
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
 </script>
 
@@ -30,7 +30,7 @@ export default {
           class="inline-flex w-full border-gray-500 border justify-center rounded-3xl px-4 py-2 text-sm font-medium text-black hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
         >
           <div class="text-sm">{{ filterName }}</div>
-          <Caret class="w-3 ml-3"></Caret>
+          <CaretDown class="w-3 ml-3 fill-black"></CaretDown>
         </MenuButton>
       </div>
 
@@ -54,7 +54,8 @@ export default {
                 }"
                 class="group flex w-full items-center rounded-3xl px-2 py-2 text-sm text-gray-900"
               >
-                <Loved class="ml-1 mr-3 w-5"></Loved>Preferred
+                <HeartFilled class="ml-1 mr-3 w-7 fill-red-500"></HeartFilled
+                >Preferred
               </button>
             </MenuItem>
             <MenuItem v-slot="{ active }">
@@ -65,7 +66,7 @@ export default {
                 }"
                 class="group flex w-full items-center rounded-3xl px-2 py-2 text-sm text-gray-900"
               >
-                <List class="ml-2 mr-4 w-5"></List>All
+                <ListUl class="ml-2 mr-4 w-5"></ListUl>All
               </button>
             </MenuItem>
           </div>
