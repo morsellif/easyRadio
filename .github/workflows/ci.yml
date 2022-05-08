@@ -1,0 +1,113 @@
+name: 'CI'
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  prettier:
+    name: Prettier check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete previous runs
+        uses: styfle/cancel-workflow-action@v0.9.1
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - name: Cache pnpm modules
+        uses: actions/cache@v2
+        with:
+          path: '~/.pnpm-store'
+          key: ${{ runner.os }}-
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 7.0.0
+          run_install: true
+      - name: Prettier
+        run: pnpm prettier:check
+
+  eslint:
+    name: Eslint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete previous runs
+        uses: styfle/cancel-workflow-action@v0.9.1
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - name: Cache pnpm modules
+        uses: actions/cache@v2
+        with:
+          path: '~/.pnpm-store'
+          key: ${{ runner.os }}-
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 7.0.0
+          run_install: true
+      - name: ESLint
+        run: pnpm lint
+
+  typecheck:
+    name: Typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete previous runs
+        uses: styfle/cancel-workflow-action@v0.9.1
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - name: Cache pnpm modules
+        uses: actions/cache@v2
+        with:
+          path: '~/.pnpm-store'
+          key: ${{ runner.os }}-
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 7.0.0
+          run_install: true
+      - name: TypeScript
+        run: pnpm typecheck
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - name: Cache pnpm modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 7.0.0
+          run_install: true
+      - name: Build
+        run: pnpm build
+#     - name: Set AWS credentials
+#       uses: aws-actions/configure-aws-credentials@v1
+#        with:
+#          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#          aws-region: eu-west-1
+#     - name: Copy files to the production website with the AWS CLI
+#       run: |
+#         cd dist
+#         aws s3 sync . s3://${{ secrets.BUCKET }}
