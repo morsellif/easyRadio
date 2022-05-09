@@ -19,6 +19,8 @@
 	},
 	"dependencies": {
 		"@headlessui/vue": "^1.6.0",
+		"@typescript-eslint/eslint-plugin": "^5.22.0",
+		"@typescript-eslint/parser": "^5.22.0",
 		"hls.js": "^1.1.5",
 		"vue": "^3.2.25",
 		"vue-router": "4"

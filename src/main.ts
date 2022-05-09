@@ -1,44 +1,41 @@
-import { createApp } from "vue";
+import { createApp } from 'vue';
 import {
-  createRouter,
-  createWebHistory,
-  NavigationGuardNext,
-  RouteLocationNormalized,
-  RouteLocationRaw,
-} from "vue-router";
+	createRouter,
+	createWebHistory,
+	NavigationGuardNext,
+	RouteLocationNormalized,
+} from 'vue-router';
 
-import Player from "./components/Player.vue";
-import PlayerPlaceholder from "./components/PlayerPlaceholder.vue";
+import Player from './components/PlayerComponent.vue';
+import PlayerPlaceholder from './components/PlayerPlaceholder.vue';
 
-import App from "./App.vue";
-import "./index.css";
-
-const Home = { template: "<div>Home</div>" };
+import App from './App.vue';
+import './index.css';
 
 const routes = [
-  { name: "home", path: "/", components: { player: PlayerPlaceholder } },
-  {
-    name: "play",
-    path: "/play",
-    components: { player: Player },
-    props: true,
-    beforeEnter: (
-      to: RouteLocationNormalized,
-      from: RouteLocationNormalized,
-      next: NavigationGuardNext
-    ) => {
-      if (!to.params.streamUrl && !to.params.type) {
-        next({ name: "home" });
-      }
-      next();
-    },
-  },
+	{ name: 'home', path: '/', components: { player: PlayerPlaceholder } },
+	{
+		name: 'play',
+		path: '/play',
+		components: { player: Player },
+		props: true,
+		beforeEnter: (
+			to: RouteLocationNormalized,
+			from: RouteLocationNormalized,
+			next: NavigationGuardNext,
+		) => {
+			if (!to.params.streamUrl && !to.params.type) {
+				next({ name: 'home' });
+			}
+			next();
+		},
+	},
 ];
 const router = createRouter({
-  history: createWebHistory(),
-  routes,
+	history: createWebHistory(),
+	routes,
 });
 
 const app = createApp(App);
 app.use(router);
-app.mount("#app");
+app.mount('#app');

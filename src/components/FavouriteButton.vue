@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import Loved from "./icons/Loved.vue";
-import NotLoved from "./icons/NotLoved.vue";
+import { defineProps } from 'vue';
+
+import HeartFilled from './icons/HeartFilledIcon.vue';
+import HeartOutline from './icons/HeartOutlineIcon.vue';
 
 defineProps<{ isLoved: boolean }>();
 </script>
 
 <template>
-  <Loved v-if="isLoved"></Loved>
-  <NotLoved v-if="!isLoved"></NotLoved>
+	<HeartFilled v-if="isLoved" class="fill-red-500 w-7"></HeartFilled>
+	<HeartOutline v-else class="fill-black w-7"></HeartOutline>
 </template>
