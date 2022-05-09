@@ -3,7 +3,7 @@ name: 'CI'
 on:
   pull_request:
     branches: [main]
-    types: [opened]
+    types: [opened, synchronize, edited]
 
 jobs:
   prettier:
