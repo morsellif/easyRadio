@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import Play from "./icons/Play.vue";
-import Pause from "./icons/Pause.vue";
+import { defineProps } from 'vue';
+import Play from './icons/PlayIcon.vue';
+import Pause from './icons/PauseIcon.vue';
 
 defineProps<{ playing: boolean }>();
 </script>
 
 <template>
-  <Pause v-if="playing" class="hover:fill-green-90"></Pause>
-  <Play v-if="!playing" class="hover:fill-green-90"></Play>
+	<Pause v-if="playing" class="fill-black w-8"></Pause>
+	<Play v-else class="fill-black w-8"></Play>
 </template>
