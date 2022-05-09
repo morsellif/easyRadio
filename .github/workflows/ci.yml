@@ -102,15 +102,18 @@ jobs:
           run_install: true
       - name: Build
         run: pnpm build
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+    steps:
       - name: Set AWS credentials
-        if: github.event.pull_request.merged == true
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-1
       - name: Copy files to the production website with the AWS CLI
-        if: github.event.pull_request.merged == true
         run: |
           cd dist
           aws s3 sync . s3://${{ secrets.BUCKET }}
