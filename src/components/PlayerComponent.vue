@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
-import { defineProps, ref, watch } from 'vue';
+import { defineProps, ref, watch, onMounted } from 'vue';
 import Hls from 'hls.js';
 import PlayerControls from './PlayerControls.vue';
 import Spinner from './icons/SpinnerIcon.vue';
@@ -46,6 +46,10 @@ function playSound(streamUrl: string, type: string) {
 		});
 	}
 }
+
+onMounted(() => {
+	playSound(route.params.streamUrl as string, route.params.type as string);
+});
 
 watch(
 	() => route.params,
