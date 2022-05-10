@@ -21,7 +21,7 @@ const routes = [
 		props: true,
 		beforeEnter: (
 			to: RouteLocationNormalized,
-			from: RouteLocationNormalized,
+			_from: RouteLocationNormalized,
 			next: NavigationGuardNext,
 		) => {
 			if (!to.params.streamUrl && !to.params.type) {
