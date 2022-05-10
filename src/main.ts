@@ -25,7 +25,7 @@ const routes = [
 			next: NavigationGuardNext,
 		) => {
 			if (!to.params.streamUrl && !to.params.type) {
-				next({ name: 'home' });
+				return next({ name: 'home' });
 			}
 			next();
 		},
