@@ -5,9 +5,12 @@ import { onMounted, ref, Ref, computed } from 'vue';
 import Radio from './RadioRow.vue';
 import Dropdown from './DropdownComponent.vue';
 import radios from '../assets/radios.json';
+import SearchComponent from './SearchComponent.vue';
 
 /* DATA */
 const lovedRadios: Ref<string[]> = ref([]);
+const searchResults: Ref<string[]> = ref([]);
+const isSearching = ref(false);
 const filter: Ref<string> = ref('All');
 
 /* METHODS */
@@ -52,6 +55,14 @@ function loveGateway(radioName: string) {
 	}
 }
 
+function radiosArray(): string[] {
+	if (isSearching.value) {
+		return searchResults.value;
+	}
+
+	return sortByPreferred.value;
+}
+
 /* MOUNTED */
 onMounted(() => {
 	/* load `lovedRadios` from localStorage */
@@ -92,8 +103,12 @@ const sortByPreferred = computed<string[]>(() => {
 			<div class="flex font-bold text-3xl grow flex-row">Radios</div>
 			<Dropdown class="flex justify-end" @filter="filterRadios"></Dropdown>
 		</li>
+		<SearchComponent
+			v-model="searchResults"
+			@searching="isSearching = !isSearching"
+		></SearchComponent>
 		<Radio
-			v-for="index in filter == 'All' ? sortByPreferred : lovedRadios"
+			v-for="index in radiosArray()"
 			:key="index"
 			:class="[
 				$route.params.radioName === index ? 'bg-gray-200' : 'hover:bg-gray-100',
