@@ -1,82 +1,87 @@
 /* eslint-disable vue/no-use-v-if-with-v-for */
 <script setup lang="ts">
+import { onMounted, ref, Ref, computed } from 'vue';
+
 import Radio from './RadioRow.vue';
 import Dropdown from './DropdownComponent.vue';
 import radios from '../assets/radios.json';
-</script>
 
-<script lang="ts">
-declare interface ComponentData {
-	lovedRadios: string[];
-	filter: string;
+/* DATA */
+const lovedRadios: Ref<string[]> = ref([]);
+const filter: Ref<string> = ref('All');
+
+/* METHODS */
+function parseLovedRadios(data: string) {
+	lovedRadios.value = JSON.parse(data);
 }
 
-export default {
-	emits: ['listen'],
-	data(): ComponentData {
-		return {
-			lovedRadios: [],
-			filter: 'All',
-		};
-	},
-	computed: {
-		sortByPreferred(): Array<string> {
-			return Object.keys(radios).sort((a, b) => {
-				if (this.lovedRadios.includes(a)) {
-					return -1;
-				}
-				if (this.lovedRadios.includes(b)) {
-					return 1;
-				}
+function isLoved(radioName: string) {
+	return (
+		lovedRadios.value!.findIndex((element) => element === radioName) !== -1
+	);
+}
 
-				return 0;
-			});
-		},
-	},
-	mounted() {
-		const exists = localStorage.getItem('lovedRadios');
-		if (exists) {
-			this.lovedRadios = JSON.parse(exists);
+function love(radioName: string) {
+	lovedRadios.value!.push(radioName);
+	save();
+}
+
+function unlove(radioName: string) {
+	const toUnlove = lovedRadios.value!.findIndex(
+		(element) => element === radioName,
+	);
+	if (toUnlove > -1) {
+		lovedRadios.value!.splice(toUnlove, 1);
+	}
+	save();
+}
+
+function save() {
+	localStorage.setItem('lovedRadios', JSON.stringify(lovedRadios.value));
+}
+
+function filterRadios(e: string) {
+	filter.value = e;
+}
+
+function loveGateway(radioName: string) {
+	if (isLoved(radioName)) {
+		unlove(radioName);
+	} else {
+		love(radioName);
+	}
+}
+
+/* MOUNTED */
+onMounted(() => {
+	/* load `lovedRadios` from localStorage */
+	let exists: string | null = localStorage.getItem('lovedRadios');
+
+	/* if `lovedRadios` does not exists, */
+	if (!exists) {
+		/* create it */
+		localStorage.setItem('lovedRadios', '[]');
+		/* load it */
+		exists = localStorage.getItem('lovedRadios');
+	}
+
+	/* parse string to JSON */
+	parseLovedRadios(exists!);
+});
+
+/* COMPUTED */
+const sortByPreferred = computed<string[]>(() => {
+	return Object.keys(radios).sort((a, b) => {
+		if (lovedRadios.value!.includes(a)) {
+			return -1;
 		}
-	},
-	methods: {
-		listen(radioName: string, streamUrl: string, type: string) {
-			this.$emit('listen', { radioName, streamUrl, type });
-		},
-		isLoved(radioName: string) {
-			return (
-				this.lovedRadios.findIndex((element) => element === radioName) !== -1
-			);
-		},
-		loveGateway(radioName: string) {
-			if (this.isLoved(radioName)) {
-				this.unlove(radioName);
-			} else {
-				this.love(radioName);
-			}
-		},
-		love(radioName: string) {
-			// TODO:
-			this.lovedRadios.push(radioName);
-			this.save();
-		},
-		unlove(radioName: string) {
-			const toUnlove = this.lovedRadios.findIndex(
-				(element) => element === radioName,
-			);
-			if (toUnlove > -1) {
-				this.lovedRadios.splice(toUnlove, 1);
-			}
-			this.save();
-		},
-		save() {
-			localStorage.setItem('lovedRadios', JSON.stringify(this.lovedRadios));
-		},
-		filterRadios(e: string) {
-			this.filter = e;
-		},
-	},
-};
+		if (lovedRadios.value!.includes(b)) {
+			return 1;
+		}
+
+		return 0;
+	});
+});
 </script>
 
 <template>
@@ -87,56 +92,27 @@ export default {
 			<div class="flex font-bold text-3xl grow flex-row">Radios</div>
 			<Dropdown class="flex justify-end" @filter="filterRadios"></Dropdown>
 		</li>
-		<div v-if="filter === 'All'">
-			<Radio
-				v-for="index in sortByPreferred"
-				:key="index"
-				:class="[
-					$route.params.radioName === index
-						? 'bg-gray-200'
-						: 'hover:bg-gray-100',
-				]"
-				class="cursor-pointer"
-				:is-loved="isLoved(index)"
-				:name="index"
-				@loved-radio="loveGateway(index)"
-				@listen-radio="
-					$router.push({
-						name: 'play',
-						params: {
-							radioName: index,
-							streamUrl: radios[index].streamUrl,
-							type: radios[index].type,
-						},
-					})
-				"
-			></Radio>
-		</div>
-		<div v-if="filter === 'Preferred'">
-			<Radio
-				v-for="index in lovedRadios"
-				:key="index"
-				:class="[
-					$route.params.radioName === index
-						? 'bg-gray-200'
-						: 'hover:bg-gray-100',
-				]"
-				:name="index"
-				:is-loved="isLoved(index)"
-				class="cursor-pointer"
-				@loved-radio="loveGateway(index)"
-				@listen-radio="
-					$router.push({
-						name: 'play',
-						params: {
-							radioName: index,
-							streamUrl: radios[index].streamUrl,
-							type: radios[index].type,
-						},
-					})
-				"
-			></Radio>
-		</div>
+		<Radio
+			v-for="index in filter == 'All' ? sortByPreferred : lovedRadios"
+			:key="index"
+			:class="[
+				$route.params.radioName === index ? 'bg-gray-200' : 'hover:bg-gray-100',
+			]"
+			class="cursor-pointer"
+			:is-loved="isLoved(index)"
+			:name="index"
+			@loved-radio="loveGateway(index)"
+			@listen-radio="
+				$router.push({
+					name: 'play',
+					params: {
+						radioName: index,
+						streamUrl: radios[index].streamUrl,
+						type: radios[index].type,
+					},
+				})
+			"
+		></Radio>
 	</ul>
 </template>
 

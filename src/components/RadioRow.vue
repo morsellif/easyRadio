@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import { defineProps, defineEmits } from 'vue';
 import FavouriteButton from './FavouriteButton.vue';
-defineProps<{ name: string; isLoved: boolean }>();
+
+defineProps<{
+	name: string;
+	isLoved: boolean;
+}>();
+
 defineEmits(['listenRadio', 'lovedRadio']);
 </script>
 

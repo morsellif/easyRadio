@@ -1,6 +1,12 @@
 {
+	"root": true,
 	"parser": "vue-eslint-parser",
-	"plugins": ["@typescript-eslint"],
+	"env": {
+		"browser": true,
+		"es2021": true,
+		"node": true
+	},
+	"plugins": ["@typescript-eslint", "prettier"],
 	"extends": [
 		"eslint:recommended",
 		"plugin:vue/base",
@@ -14,6 +20,13 @@
 		// 'plugin:vue/vue3-recommended'
 	],
 	"rules": {
+		"@typescript-eslint/interface-name-prefix": "off",
+		"@typescript-eslint/explicit-function-return-type": "off",
+		"@typescript-eslint/explicit-module-boundary-types": "off",
+		"@typescript-eslint/no-explicit-any": "off",
+		"@typescript-eslint/no-non-null-assertion": "off",
+		"@typescript-eslint/no-unused-vars": ["off", { "argsIgnorePattern": "^_" }],
+		"prettier/prettier": ["error", {}, { "usePrettierrc": true }]
 		// override/add rules settings here, such as:
 		// 'vue/no-unused-vars': 'error'
 	},

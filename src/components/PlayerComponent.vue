@@ -1,80 +1,64 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
+import { useRoute } from 'vue-router';
+import { defineProps, ref, watch } from 'vue';
 import Hls from 'hls.js';
 import PlayerControls from './PlayerControls.vue';
 import Spinner from './icons/SpinnerIcon.vue';
 import Circle from './icons/CircleIcon.vue';
+
+const route = useRoute();
+const media = ref<HTMLMediaElement | null>(null);
+
+let hls = new Hls();
+const playing = ref(true);
+const isBuffering = ref(false);
 
 defineProps<{
 	radioName: string;
 	streamUrl: string;
 	type: string;
 }>();
-</script>
 
-<script lang="ts">
-export default {
-	data() {
-		return {
-			loaded: false,
-			mediaRecoveryAttempts: 0,
-			id3TagMetadata: null,
-			video: null,
-			hls: new Hls(),
-			playing: true,
-			isBuffering: false,
-		};
+function changePlayback() {
+	if (media.value!.paused) {
+		playing.value = true;
+		media.value!.play();
+	} else {
+		playing.value = false;
+		media.value!.pause();
+	}
+}
+// eslint-disable-next-line no-unused-vars
+function playSound(streamUrl: string, type: string) {
+	if (Hls.isSupported() && type == 'm3u8') {
+		hls = new Hls();
+
+		hls.loadSource(streamUrl);
+		hls.attachMedia(media.value!);
+
+		hls.on(Hls.Events.MANIFEST_PARSED, () => {
+			media.value!.play();
+		});
+	} else {
+		media.value!.src = streamUrl;
+		media.value!.addEventListener('loadedmetadata', () => {
+			media.value!.play();
+		});
+	}
+}
+
+watch(
+	() => route.params,
+	(newParams) => {
+		console.log(newParams);
+		isBuffering.value = false;
+		media.value!.pause();
+		hls.destroy();
+		media.value!.src = '';
+
+		playSound(newParams.streamUrl as string, newParams.type as string);
 	},
-	watch: {
-		$route(to: any) {
-			this.isBuffering = false;
-			(this.$refs.media as HTMLMediaElement).pause();
-			this.hls.destroy();
-			(this.$refs.media as HTMLMediaElement).src = '';
-
-			this.playSound(to.params.streamUrl, to.params.type);
-		},
-	},
-	mounted() {
-		this.playSound(
-			this.$route.params.streamUrl as string,
-			this.$route.params.type as string,
-		);
-	},
-	methods: {
-		changePlayback() {
-			console.log((this.$refs.media as HTMLMediaElement).paused);
-			if ((this.$refs.media as HTMLMediaElement).paused) {
-				this.playing = true;
-				(this.$refs.media as HTMLMediaElement).play();
-			} else {
-				this.playing = false;
-				(this.$refs.media as HTMLMediaElement).pause();
-			}
-		},
-		playSound(streamUrl: string, type: string) {
-			if (Hls.isSupported() && type == 'm3u8') {
-				this.hls = new Hls();
-
-				this.hls.loadSource(streamUrl);
-				this.hls.attachMedia(this.$refs.media as HTMLMediaElement);
-
-				this.hls.on(Hls.Events.MANIFEST_PARSED, () => {
-					(this.$refs.media as HTMLMediaElement).play();
-				});
-			} else {
-				(this.$refs.media as HTMLMediaElement).src = streamUrl;
-
-				(this.$refs.media as HTMLMediaElement).addEventListener(
-					'loadedmetadata',
-					() => {
-						(this.$refs.media as HTMLMediaElement).play();
-					},
-				);
-			}
-		},
-	},
-};
+);
 </script>
 
 <template>
