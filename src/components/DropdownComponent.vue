@@ -3,24 +3,15 @@ import HeartFilled from './icons/HeartFilledIcon.vue';
 import ListUl from './icons/ListUlIcon.vue';
 import CaretDown from './icons/CaretDownIcon.vue';
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue';
-</script>
+import { ref, defineEmits } from 'vue';
 
-<script lang="ts">
-export default {
-	name: 'DropdownComponent',
-	emits: ['filter'],
-	data() {
-		return {
-			filterName: 'Filter',
-		};
-	},
-	methods: {
-		filter(filterName: string) {
-			this.filterName = filterName;
-			this.$emit('filter', filterName);
-		},
-	},
-};
+const filterName = ref('Filter');
+const emit = defineEmits(['filter']);
+
+function filter(newFilterName: string) {
+	filterName.value = newFilterName;
+	emit('filter', filterName.value);
+}
 </script>
 
 <template>
