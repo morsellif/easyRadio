@@ -29,7 +29,7 @@ function changePlayback() {
 	}
 }
 // eslint-disable-next-line no-unused-vars
-function playSound(streamUrl: string, type: string) {
+function playSound(radioName: string, streamUrl: string, type: string) {
 	if (Hls.isSupported() && type == 'm3u8') {
 		hls = new Hls();
 
@@ -45,22 +45,44 @@ function playSound(streamUrl: string, type: string) {
 			media.value!.play();
 		});
 	}
+
+	if ('mediaSession' in navigator) {
+		navigator.mediaSession.metadata = new MediaMetadata({
+			title: radioName,
+			artist: 'easyRadio',
+			album: '',
+		});
+
+		navigator.mediaSession.setActionHandler('play', function () {
+			changePlayback();
+		});
+		navigator.mediaSession.setActionHandler('pause', function () {
+			changePlayback();
+		});
+	}
 }
 
 onMounted(() => {
-	playSound(route.params.streamUrl as string, route.params.type as string);
+	playSound(
+		route.params.radioName as string,
+		route.params.streamUrl as string,
+		route.params.type as string,
+	);
 });
 
 watch(
 	() => route.params,
 	(newParams) => {
-		console.log(newParams);
 		isBuffering.value = false;
 		media.value!.pause();
 		hls.destroy();
 		media.value!.src = '';
 
-		playSound(newParams.streamUrl as string, newParams.type as string);
+		playSound(
+			newParams.radioName as string,
+			newParams.streamUrl as string,
+			newParams.type as string,
+		);
 	},
 );
 </script>
