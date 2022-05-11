@@ -105,8 +105,11 @@ const sortByPreferred = computed<string[]>(() => {
 		</li>
 		<SearchComponent
 			v-model="searchResults"
-			@searching="isSearching = !isSearching"
+			@searching="isSearching = $event"
 		></SearchComponent>
+		<li v-if="isSearching && searchResults.length <= 0">
+			Start typing. Results will appear here.
+		</li>
 		<Radio
 			v-for="index in radiosArray()"
 			:key="index"
