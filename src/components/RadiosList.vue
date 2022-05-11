@@ -6,6 +6,7 @@ import Radio from './RadioRow.vue';
 import Dropdown from './DropdownComponent.vue';
 import radios from '../assets/radios.json';
 import SearchComponent from './SearchComponent.vue';
+import SearchPlaceholder from './SearchPlaceholder.vue';
 
 /* DATA */
 const lovedRadios: Ref<string[]> = ref([]);
@@ -107,9 +108,10 @@ const sortByPreferred = computed<string[]>(() => {
 			v-model="searchResults"
 			@searching="isSearching = $event"
 		></SearchComponent>
-		<li v-if="isSearching && searchResults.length <= 0">
-			Start typing. Results will appear here.
-		</li>
+		<SearchPlaceholder
+			:is-searching="isSearching"
+			:search-results="searchResults"
+		></SearchPlaceholder>
 		<Radio
 			v-for="index in radiosArray()"
 			:key="index"
