@@ -61,6 +61,10 @@ function radiosArray(): string[] {
 		return searchResults.value;
 	}
 
+	if (filter.value == 'Preferred') {
+		return lovedRadios.value;
+	}
+
 	return sortByPreferred.value;
 }
 
