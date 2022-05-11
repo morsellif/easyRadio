@@ -42,9 +42,9 @@ function clear() {
 	>
 		<div
 			:class="{
-				'border-sky-500 ring-sky-500 ring-1 outline-none pr-9': isSearching,
+				'border-sky-500 ring-sky-500 ring-2 pr-9': isSearching,
 			}"
-			class="border border-slate-300 relative block w-full bg-white rounded-3xl pl-9 shadow-sm sm:text-sm outline-none appearance-none"
+			class="border border-slate-300 relative block w-full bg-white rounded-3xl pl-9 shadow-sm sm:text-sm"
 		>
 			<span class="sr-only">Search</span>
 			<span class="absolute inset-y-0 left-0 flex items-center pl-2">
@@ -52,7 +52,7 @@ function clear() {
 			</span>
 			<input
 				v-model="searchValue"
-				class="placeholder:italic placeholder:text-slate-400 block focus:outline-none py-2 w-full rounded-3xl"
+				class="placeholder:italic placeholder:text-slate-400 block focus:outline-none pl-1 py-2 w-full rounded-3xl"
 				placeholder="Search for radios..."
 				type="text"
 				name="search"
