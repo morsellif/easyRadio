@@ -28,9 +28,9 @@ function changePlayback() {
 		media.value!.pause();
 	}
 }
-// eslint-disable-next-line no-unused-vars
 function playSound(radioName: string, streamUrl: string, type: string) {
 	if (Hls.isSupported() && type == 'm3u8') {
+		hls.destroy();
 		hls = new Hls();
 
 		hls.loadSource(streamUrl);
@@ -106,7 +106,7 @@ watch(
 			</div>
 		</div>
 	</div>
-	<audio ref="media" @canplay="isBuffering = true"></audio>
+	<video ref="media" class="hidden" @canplay="isBuffering = true"></video>
 </template>
 
 <style></style>
