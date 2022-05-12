@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
-import { defineProps, ref, watch, onMounted } from 'vue';
+import { ref, watch, onMounted } from 'vue';
 import Hls from 'hls.js';
 import PlayerControls from './PlayerControls.vue';
 import Spinner from './icons/SpinnerIcon.vue';
@@ -9,15 +9,17 @@ import Circle from './icons/CircleIcon.vue';
 const route = useRoute();
 const media = ref<HTMLMediaElement | null>(null);
 
-let hls: Hls;
+let hls: Hls | null = null;
 const playing = ref(true);
 const isBuffering = ref(false);
 
-defineProps<{
-	radioName: string;
-	streamUrl: string;
-	type: string;
-}>();
+/* check if Hls is supported natively by browser */
+function isHlsSupportedNatively() {
+	return Boolean(
+		media.value!.canPlayType('application/vnd.apple.mpegURL') ||
+			media.value!.canPlayType('audio/mpegurl'),
+	);
+}
 
 function changePlayback() {
 	if (media.value!.paused) {
@@ -28,61 +30,73 @@ function changePlayback() {
 		media.value!.pause();
 	}
 }
-function playSound(radioName: string, streamUrl: string, type: string) {
-	if (Hls.isSupported() && type == 'm3u8') {
-		hls.destroy();
-		hls = new Hls();
 
-		hls.loadSource(streamUrl);
-		hls.attachMedia(media.value!);
+function playMedia() {
+	media.value!.play();
+}
 
-		hls.on(Hls.Events.MANIFEST_PARSED, () => {
-			media.value!.play();
-		});
+function pauseMedia() {
+	media.value!.pause();
+}
+
+function playSound() {
+	/* is m3u8 and browser does not support HLS natively*/
+	if (!isHlsSupportedNatively() && route.params.type == 'm3u8') {
+		/* does browser support Hls.js library? */
+		if (Hls.isSupported()) {
+			hls?.destroy();
+			hls = new Hls();
+
+			hls.loadSource(route.params.streamUrl as string);
+			hls.attachMedia(media.value!);
+
+			hls.on(Hls.Events.MANIFEST_PARSED, () => {
+				playMedia();
+				setMediaSession();
+			});
+		} else {
+			/* no player able to play the selected audio stream */
+			throw new Error('No player avaible.');
+		}
 	} else {
-		media.value!.src = streamUrl;
+		/* is m3u8 and browser supports HLS || is other media */
+		media.value!.src = route.params.streamUrl as string;
 		media.value!.addEventListener('loadedmetadata', () => {
-			media.value!.play();
+			playMedia();
+			setMediaSession();
 		});
 	}
+}
 
+function setMediaSession() {
 	if ('mediaSession' in navigator) {
 		navigator.mediaSession.metadata = new MediaMetadata({
-			title: radioName,
+			title: route.params.radioName as string,
 			artist: 'easyRadio',
 			album: '',
 		});
 
 		navigator.mediaSession.setActionHandler('play', function () {
-			changePlayback();
+			playMedia();
 		});
 		navigator.mediaSession.setActionHandler('pause', function () {
-			changePlayback();
+			pauseMedia();
+		});
+		navigator.mediaSession.setActionHandler('stop', function () {
+			throw new Error('Stopped.');
 		});
 	}
 }
 
 onMounted(() => {
-	playSound(
-		route.params.radioName as string,
-		route.params.streamUrl as string,
-		route.params.type as string,
-	);
+	playSound();
 });
 
 watch(
 	() => route.params,
-	(newParams) => {
+	() => {
 		isBuffering.value = false;
-		media.value!.pause();
-		hls.destroy();
-		media.value!.src = '';
-
-		playSound(
-			newParams.radioName as string,
-			newParams.streamUrl as string,
-			newParams.type as string,
-		);
+		playSound();
 	},
 );
 </script>
@@ -92,7 +106,9 @@ watch(
 		class="bg-white border border-gray-200 rounded-3xl drop-shadow-md mb-4 p-4"
 	>
 		<div>
-			<div class="font-bold text-3xl text-center">{{ radioName }}</div>
+			<div class="font-bold text-3xl text-center">
+				{{ route.params.radioName }}
+			</div>
 			<div v-if="isBuffering" class="flex justify-center pt-2">
 				<Circle class="w-2 animate-ping"></Circle>
 				<div class="flex ml-2 font-bold">LIVE</div>
