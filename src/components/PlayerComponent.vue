@@ -10,7 +10,7 @@ const route = useRoute();
 const media = ref<HTMLMediaElement | null>(null);
 
 let hls: Hls | null = null;
-const playing = ref(true);
+const isPlaying = ref(false);
 const isBuffering = ref(false);
 
 /* check if Hls is supported natively by browser */
@@ -23,11 +23,9 @@ function isHlsSupportedNatively() {
 
 function changePlayback() {
 	if (media.value!.paused) {
-		playing.value = true;
-		media.value!.play();
+		playMedia();
 	} else {
-		playing.value = false;
-		media.value!.pause();
+		pauseMedia();
 	}
 }
 
@@ -96,6 +94,7 @@ watch(
 	() => route.params,
 	() => {
 		isBuffering.value = false;
+		isPlaying.value = false;
 		playSound();
 	},
 );
@@ -118,11 +117,17 @@ watch(
 				<div class="flex ml-2 font-bold">BUFFERING</div>
 			</div>
 			<div class="flex justify-center flex-row pt-2" @click="changePlayback()">
-				<PlayerControls :playing="playing"></PlayerControls>
+				<PlayerControls :playing="isPlaying"></PlayerControls>
 			</div>
 		</div>
 	</div>
-	<video ref="media" class="hidden" @canplay="isBuffering = true"></video>
+	<video
+		ref="media"
+		class="hidden"
+		@canplay="isBuffering = true"
+		@playing="isPlaying = true"
+		@pause="isPlaying = false"
+	></video>
 </template>
 
 <style></style>
