@@ -9,7 +9,7 @@ import Circle from './icons/CircleIcon.vue';
 const route = useRoute();
 const media = ref<HTMLMediaElement | null>(null);
 
-let hls = new Hls();
+let hls: Hls;
 const playing = ref(true);
 const isBuffering = ref(false);
 
