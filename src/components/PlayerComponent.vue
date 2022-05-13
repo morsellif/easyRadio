@@ -55,6 +55,10 @@ function readyToBePlayed() {
 }
 
 function loadMedia() {
+	/* start buffering indicator */
+	isBuffering.value = true;
+	isPlaying.value = false;
+
 	/* stop previously playing media */
 	stopMedia();
 
@@ -111,8 +115,6 @@ onMounted(() => {
 watch(
 	() => [props.radioName, props.streamUrl, props.type],
 	() => {
-		isBuffering.value = true;
-		isPlaying.value = false;
 		loadMedia();
 	},
 );
