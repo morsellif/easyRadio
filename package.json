@@ -1,6 +1,6 @@
 {
 	"name": "easy-radio",
-	"packageManager": "pnpm@7.0.1",
+	"packageManager": "pnpm@7.1.0",
 	"private": true,
 	"repository": {
 		"type": "git",
@@ -45,7 +45,7 @@
 		"vite": "2.9.9",
 		"vite-plugin-eslint": "1.6.0",
 		"vue-eslint-parser": "8.3.0",
-		"vue-tsc": "0.34.12"
+		"vue-tsc": "0.34.13"
 	},
 	"lint-staged": {
 		"*.{js,jsx,ts,tsx,vue}": [
