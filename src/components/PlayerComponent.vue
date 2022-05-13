@@ -43,12 +43,20 @@ function pauseMedia() {
 	media.value!.pause();
 }
 
-function playSound() {
+function stopMedia() {
+	hls?.destroy();
+	hls = null;
+	media.value!.src = '';
+}
+
+function loadMedia() {
+	/* stop previously playing media */
+	stopMedia();
+
 	/* is m3u8 and browser does not support HLS natively*/
 	if (!isHlsSupportedNatively() && props.type == 'm3u8') {
 		/* does browser support Hls.js library? */
 		if (Hls.isSupported()) {
-			hls?.destroy();
 			hls = new Hls();
 
 			hls.loadSource(props.streamUrl);
@@ -87,17 +95,14 @@ function setMediaSession() {
 			pauseMedia();
 		});
 		navigator.mediaSession.setActionHandler('stop', function () {
-			hls?.destroy();
-			hls = null;
-			media.value!.src = '';
-
+			stopMedia();
 			router.push({ name: 'home' });
 		});
 	}
 }
 
 onMounted(() => {
-	playSound();
+	loadMedia();
 });
 
 watch(
@@ -105,7 +110,7 @@ watch(
 	() => {
 		isBuffering.value = false;
 		isPlaying.value = false;
-		playSound();
+		loadMedia();
 	},
 );
 </script>
