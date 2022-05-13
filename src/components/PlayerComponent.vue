@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
-import { ref, watch, onMounted } from 'vue';
+import { ref, watch, onMounted, defineProps } from 'vue';
 import Hls from 'hls.js';
 import PlayerControls from './PlayerControls.vue';
 import Spinner from './icons/SpinnerIcon.vue';
@@ -12,6 +12,12 @@ const media = ref<HTMLMediaElement | null>(null);
 let hls: Hls | null = null;
 const isPlaying = ref(false);
 const isBuffering = ref(false);
+
+defineProps<{
+	radioName: string;
+	streamUrl: string;
+	type: string;
+}>();
 
 /* check if Hls is supported natively by browser */
 function isHlsSupportedNatively() {
