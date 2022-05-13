@@ -21,7 +21,7 @@
 		},
 		{
 			"updateTypes": ["major"],
-			"stabilityDays": "2",
+			"stabilityDays": 2,
 			"automerge": false,
 			"labels": ["major"]
 		},
