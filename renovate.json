@@ -1,5 +1,40 @@
 {
-  "extends": [
-    "config:base"
-  ]
+	"extends": [
+		"config:base",
+		"schedule:weekends",
+		"group:allNonMajor",
+		":automergePr",
+		":autodetectPinVersions",
+		":combinePatchMinorReleases",
+		":rebaseStalePrs",
+		":prConcurrentLimit10",
+		":prHourlyLimit1",
+		":updateNotScheduled",
+		"github>whitesource/merge-confidence:beta"
+	],
+	"labels": ["dependencies"],
+	"packageRules": [
+		{
+			"updateTypes": ["minor", "patch", "pin", "digest"],
+			"automerge": true,
+			"labels": ["minor/patch"]
+		},
+		{
+			"updateTypes": ["major"],
+			"stabilityDays": "2",
+			"automerge": false,
+			"labels": ["major"]
+		},
+		{
+			"matchDepTypes": ["devDependencies"],
+			"prPriority": -1,
+			"labels": ["dev"]
+		}
+	],
+	"timezone": "Europe/Rome",
+	"schedule": [
+		"after 10pm every weekday",
+		"before 5am every weekday",
+		"every weekend"
+	]
 }
