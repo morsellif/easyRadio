@@ -144,6 +144,7 @@ watch(
 	<video
 		ref="media"
 		class="hidden"
+		playsinline
 		@canplay="readyToBePlayed()"
 		@playing="isPlaying = true"
 		@pause="isPlaying = false"
