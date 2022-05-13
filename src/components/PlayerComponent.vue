@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { ref, watch, onMounted, defineProps } from 'vue';
+import { useRouter } from 'vue-router';
 import Hls from 'hls.js';
 import PlayerControls from './PlayerControls.vue';
 import Spinner from './icons/SpinnerIcon.vue';
 import Circle from './icons/CircleIcon.vue';
 
+const router = useRouter();
 const media = ref<HTMLMediaElement | null>(null);
 
 let hls: Hls | null = null;
@@ -85,7 +87,11 @@ function setMediaSession() {
 			pauseMedia();
 		});
 		navigator.mediaSession.setActionHandler('stop', function () {
-			throw new Error('Stopped.');
+			hls?.destroy();
+			hls = null;
+			media.value!.src = '';
+
+			router.push({ name: 'home' });
 		});
 	}
 }
