@@ -145,6 +145,7 @@ watch(
 		ref="media"
 		class="hidden"
 		playsinline
+		autoplay
 		@canplay="readyToBePlayed()"
 		@playing="isPlaying = true"
 		@pause="isPlaying = false"
