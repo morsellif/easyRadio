@@ -1,19 +1,17 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router';
 import { ref, watch, onMounted, defineProps } from 'vue';
 import Hls from 'hls.js';
 import PlayerControls from './PlayerControls.vue';
 import Spinner from './icons/SpinnerIcon.vue';
 import Circle from './icons/CircleIcon.vue';
 
-const route = useRoute();
 const media = ref<HTMLMediaElement | null>(null);
 
 let hls: Hls | null = null;
 const isPlaying = ref(false);
 const isBuffering = ref(false);
 
-defineProps<{
+const props = defineProps<{
 	radioName: string;
 	streamUrl: string;
 	type: string;
@@ -45,13 +43,13 @@ function pauseMedia() {
 
 function playSound() {
 	/* is m3u8 and browser does not support HLS natively*/
-	if (!isHlsSupportedNatively() && route.params.type == 'm3u8') {
+	if (!isHlsSupportedNatively() && props.type == 'm3u8') {
 		/* does browser support Hls.js library? */
 		if (Hls.isSupported()) {
 			hls?.destroy();
 			hls = new Hls();
 
-			hls.loadSource(route.params.streamUrl as string);
+			hls.loadSource(props.streamUrl);
 			hls.attachMedia(media.value!);
 
 			hls.on(Hls.Events.MANIFEST_PARSED, () => {
@@ -64,7 +62,7 @@ function playSound() {
 		}
 	} else {
 		/* is m3u8 and browser supports HLS || is other media */
-		media.value!.src = route.params.streamUrl as string;
+		media.value!.src = props.streamUrl;
 		media.value!.addEventListener('loadedmetadata', () => {
 			playMedia();
 			setMediaSession();
@@ -75,7 +73,7 @@ function playSound() {
 function setMediaSession() {
 	if ('mediaSession' in navigator) {
 		navigator.mediaSession.metadata = new MediaMetadata({
-			title: route.params.radioName as string,
+			title: props.radioName,
 			artist: 'easyRadio',
 			album: '',
 		});
@@ -97,7 +95,7 @@ onMounted(() => {
 });
 
 watch(
-	() => route.params,
+	() => [props.radioName, props.streamUrl, props.type],
 	() => {
 		isBuffering.value = false;
 		isPlaying.value = false;
@@ -112,7 +110,7 @@ watch(
 	>
 		<div>
 			<div class="font-bold text-3xl text-center">
-				{{ route.params.radioName }}
+				{{ props.radioName }}
 			</div>
 			<div v-if="isBuffering" class="flex justify-center pt-2">
 				<Circle class="w-2 animate-ping"></Circle>
