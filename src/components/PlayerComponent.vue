@@ -1,88 +1,119 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router';
-import { defineProps, ref, watch, onMounted } from 'vue';
+import { ref, watch, onMounted, defineProps } from 'vue';
+import { useRouter } from 'vue-router';
 import Hls from 'hls.js';
 import PlayerControls from './PlayerControls.vue';
 import Spinner from './icons/SpinnerIcon.vue';
 import Circle from './icons/CircleIcon.vue';
 
-const route = useRoute();
+const router = useRouter();
 const media = ref<HTMLMediaElement | null>(null);
 
-let hls = new Hls();
-const playing = ref(true);
+let hls: Hls | null = null;
+const isPlaying = ref(false);
 const isBuffering = ref(false);
 
-defineProps<{
+const props = defineProps<{
 	radioName: string;
 	streamUrl: string;
 	type: string;
 }>();
 
+/* check if Hls is supported natively by browser */
+function isHlsSupportedNatively() {
+	return Boolean(
+		media.value!.canPlayType('application/vnd.apple.mpegURL') ||
+			media.value!.canPlayType('audio/mpegurl'),
+	);
+}
+
 function changePlayback() {
 	if (media.value!.paused) {
-		playing.value = true;
-		media.value!.play();
+		playMedia();
 	} else {
-		playing.value = false;
-		media.value!.pause();
+		pauseMedia();
 	}
 }
-// eslint-disable-next-line no-unused-vars
-function playSound(radioName: string, streamUrl: string, type: string) {
-	if (Hls.isSupported() && type == 'm3u8') {
-		hls = new Hls();
 
-		hls.loadSource(streamUrl);
-		hls.attachMedia(media.value!);
+function playMedia() {
+	media.value!.play();
+}
 
-		hls.on(Hls.Events.MANIFEST_PARSED, () => {
-			media.value!.play();
-		});
+function pauseMedia() {
+	media.value!.pause();
+}
+
+function stopMedia() {
+	hls?.destroy();
+	hls = null;
+	media.value!.src = '';
+}
+
+function readyToBePlayed() {
+	playMedia();
+	isBuffering.value = false;
+}
+
+function loadMedia() {
+	/* stop previously playing media */
+	stopMedia();
+
+	/* is m3u8 and browser does not support HLS natively*/
+	if (!isHlsSupportedNatively() && props.type == 'm3u8') {
+		/* does browser support Hls.js library? */
+		if (Hls.isSupported()) {
+			hls = new Hls();
+
+			hls.loadSource(props.streamUrl);
+			hls.attachMedia(media.value!);
+
+			hls.on(Hls.Events.MANIFEST_PARSED, () => {
+				setMediaSession();
+			});
+		} else {
+			/* no player able to play the selected audio stream */
+			throw new Error('No player avaible.');
+		}
 	} else {
-		media.value!.src = streamUrl;
+		/* is m3u8 and browser supports HLS || is other media */
+		media.value!.src = props.streamUrl;
 		media.value!.addEventListener('loadedmetadata', () => {
-			media.value!.play();
+			setMediaSession();
 		});
 	}
+}
 
+function setMediaSession() {
 	if ('mediaSession' in navigator) {
 		navigator.mediaSession.metadata = new MediaMetadata({
-			title: radioName,
+			title: props.radioName,
 			artist: 'easyRadio',
 			album: '',
 		});
 
 		navigator.mediaSession.setActionHandler('play', function () {
-			changePlayback();
+			playMedia();
 		});
 		navigator.mediaSession.setActionHandler('pause', function () {
-			changePlayback();
+			pauseMedia();
+		});
+		navigator.mediaSession.setActionHandler('stop', function () {
+			stopMedia();
+			router.push({ name: 'home' });
 		});
 	}
 }
 
 onMounted(() => {
-	playSound(
-		route.params.radioName as string,
-		route.params.streamUrl as string,
-		route.params.type as string,
-	);
+	loadMedia();
 });
 
 watch(
-	() => route.params,
-	(newParams) => {
-		isBuffering.value = false;
-		media.value!.pause();
-		hls.destroy();
-		media.value!.src = '';
-
-		playSound(
-			newParams.radioName as string,
-			newParams.streamUrl as string,
-			newParams.type as string,
-		);
+	() => [props.radioName, props.streamUrl, props.type],
+	() => {
+		isBuffering.value = true;
+		isPlaying.value = false;
+		loadMedia();
 	},
 );
 </script>
@@ -92,8 +123,10 @@ watch(
 		class="bg-white border border-gray-200 rounded-3xl drop-shadow-md mb-4 p-4"
 	>
 		<div>
-			<div class="font-bold text-3xl text-center">{{ radioName }}</div>
-			<div v-if="isBuffering" class="flex justify-center pt-2">
+			<div class="font-bold text-3xl text-center">
+				{{ props.radioName }}
+			</div>
+			<div v-if="!isBuffering" class="flex justify-center pt-2">
 				<Circle class="w-2 animate-ping"></Circle>
 				<div class="flex ml-2 font-bold">LIVE</div>
 			</div>
@@ -102,11 +135,17 @@ watch(
 				<div class="flex ml-2 font-bold">BUFFERING</div>
 			</div>
 			<div class="flex justify-center flex-row pt-2" @click="changePlayback()">
-				<PlayerControls :playing="playing"></PlayerControls>
+				<PlayerControls :playing="isPlaying"></PlayerControls>
 			</div>
 		</div>
 	</div>
-	<audio ref="media" @canplay="isBuffering = true"></audio>
+	<video
+		ref="media"
+		class="hidden"
+		@canplay="readyToBePlayed()"
+		@playing="isPlaying = true"
+		@pause="isPlaying = false"
+	></video>
 </template>
 
 <style></style>
