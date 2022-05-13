@@ -49,6 +49,11 @@ function stopMedia() {
 	media.value!.src = '';
 }
 
+function readyToBePlayed() {
+	playMedia();
+	isBuffering.value = false;
+}
+
 function loadMedia() {
 	/* stop previously playing media */
 	stopMedia();
@@ -63,7 +68,6 @@ function loadMedia() {
 			hls.attachMedia(media.value!);
 
 			hls.on(Hls.Events.MANIFEST_PARSED, () => {
-				playMedia();
 				setMediaSession();
 			});
 		} else {
@@ -74,7 +78,6 @@ function loadMedia() {
 		/* is m3u8 and browser supports HLS || is other media */
 		media.value!.src = props.streamUrl;
 		media.value!.addEventListener('loadedmetadata', () => {
-			playMedia();
 			setMediaSession();
 		});
 	}
@@ -108,7 +111,7 @@ onMounted(() => {
 watch(
 	() => [props.radioName, props.streamUrl, props.type],
 	() => {
-		isBuffering.value = false;
+		isBuffering.value = true;
 		isPlaying.value = false;
 		loadMedia();
 	},
@@ -123,7 +126,7 @@ watch(
 			<div class="font-bold text-3xl text-center">
 				{{ props.radioName }}
 			</div>
-			<div v-if="isBuffering" class="flex justify-center pt-2">
+			<div v-if="!isBuffering" class="flex justify-center pt-2">
 				<Circle class="w-2 animate-ping"></Circle>
 				<div class="flex ml-2 font-bold">LIVE</div>
 			</div>
@@ -139,7 +142,7 @@ watch(
 	<video
 		ref="media"
 		class="hidden"
-		@canplay="isBuffering = true"
+		@canplay="readyToBePlayed()"
 		@playing="isPlaying = true"
 		@pause="isPlaying = false"
 	></video>
