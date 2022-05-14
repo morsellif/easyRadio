@@ -147,7 +147,7 @@ const sortByPreferred = computed<string[]>(() => {
 						})
 					"
 				></Radio>
-				<CreditsComponent></CreditsComponent>
+				<CreditsComponent v-if="isSearching"></CreditsComponent>
 			</ul>
 		</nav>
 	</div>
