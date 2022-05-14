@@ -124,19 +124,23 @@ watch(
 	<div
 		class="bg-white border border-gray-200 rounded-3xl drop-shadow-md mb-4 p-4"
 	>
-		<div>
-			<div class="font-bold text-3xl text-center">
-				{{ props.radioName }}
+		<div class="flex">
+			<div class="flex flex-col">
+				<div class="font-semibold text-xl text-left grow-0">
+					{{ props.radioName }}
+				</div>
+				<div class="flex">
+					<div v-if="!isBuffering" class="flex justify-center pt-1 pl-1">
+						<Circle class="w-2 animate-ping"></Circle>
+						<div class="flex ml-2 font-bold">LIVE</div>
+					</div>
+					<div v-else class="flex justify-center pt-1">
+						<Spinner class="w-5 animate-spin"></Spinner>
+						<div class="flex ml-2 font-bold">BUFFERING</div>
+					</div>
+				</div>
 			</div>
-			<div v-if="!isBuffering" class="flex justify-center pt-2">
-				<Circle class="w-2 animate-ping"></Circle>
-				<div class="flex ml-2 font-bold">LIVE</div>
-			</div>
-			<div v-else class="flex justify-center pt-2">
-				<Spinner class="w-5 animate-spin"></Spinner>
-				<div class="flex ml-2 font-bold">BUFFERING</div>
-			</div>
-			<div class="flex justify-center flex-row pt-2" @click="changePlayback()">
+			<div class="flex justify-end flex-row grow" @click="changePlayback()">
 				<PlayerControls :playing="isPlaying"></PlayerControls>
 			</div>
 		</div>

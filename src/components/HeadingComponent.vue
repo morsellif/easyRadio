@@ -4,13 +4,13 @@ import TowerBroadcastIcon from './icons/TowerBroadcastIcon.vue';
 
 <template>
 	<div
-		class="bg-white border border-gray-200 rounded-3xl drop-shadow-md mb-4 mt-4 p-4"
+		class="bg-white border border-gray-200 rounded-3xl drop-shadow-md mb-3 mt-3 p-1"
 	>
-		<div class="flex flex-column bg-white border-1 justify-center">
+		<div class="flex flex-column bg-white border-1 justify-center rounded-3xl">
 			<div class="align-middle">
-				<TowerBroadcastIcon class="fill-black w-12"></TowerBroadcastIcon>
+				<TowerBroadcastIcon class="fill-black w-5"></TowerBroadcastIcon>
 			</div>
-			<div class="flex self-end text-2xl">easyRadio</div>
+			<div class="flex self-end text-2xl font-semibold">easyRadio</div>
 		</div>
 	</div>
 </template>
