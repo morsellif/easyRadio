@@ -5,6 +5,7 @@ import {
 	NavigationGuardNext,
 	RouteLocationNormalized,
 } from 'vue-router';
+import VueGtag from 'vue-gtag';
 
 import Player from './components/PlayerComponent.vue';
 import PlayerPlaceholder from './components/PlayerPlaceholder.vue';
@@ -38,4 +39,5 @@ const router = createRouter({
 
 const app = createApp(App);
 app.use(router);
+app.use(VueGtag, { config: { id: import.meta.env.VITE_GTAG_ID } });
 app.mount('#app');
