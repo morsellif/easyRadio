@@ -7,6 +7,7 @@ import Dropdown from './DropdownComponent.vue';
 import radios from '../assets/radios.json';
 import SearchComponent from './SearchComponent.vue';
 import SearchPlaceholder from './SearchPlaceholder.vue';
+import CreditsComponent from './CreditsComponent.vue';
 
 /* DATA */
 const lovedRadios: Ref<string[]> = ref([]);
@@ -146,6 +147,7 @@ const sortByPreferred = computed<string[]>(() => {
 						})
 					"
 				></Radio>
+				<CreditsComponent></CreditsComponent>
 			</ul>
 		</nav>
 	</div>
