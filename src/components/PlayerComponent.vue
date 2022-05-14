@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { ref, watch, onMounted, defineProps } from 'vue';
 import { useRouter } from 'vue-router';
+
+import { event } from 'vue-gtag';
+
 import Hls from 'hls.js';
 import PlayerControls from './PlayerControls.vue';
 import Spinner from './icons/SpinnerIcon.vue';
@@ -55,6 +58,7 @@ function readyToBePlayed() {
 }
 
 function loadMedia() {
+	event('listening', { radioName: props.radioName });
 	/* start buffering indicator */
 	isBuffering.value = true;
 	isPlaying.value = false;
