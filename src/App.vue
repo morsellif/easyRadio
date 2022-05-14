@@ -3,7 +3,7 @@
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import Radios from './components/RadiosList.vue';
 import Heading from './components/HeadingComponent.vue';
-import Credits from './components/CreditsComponent.vue';
+// import Credits from './components/CreditsComponent.vue';
 </script>
 
 <script lang="ts">
@@ -32,12 +32,13 @@ export default {
 </script>
 
 <template>
-	<audio id="playme"></audio>
-	<div class="container mx-auto max-w-xs rounded-3xl">
+	<div
+		class="container mx-auto max-w-xs h-screen rounded-3xl flex flex-col flex-1 relative mb-0"
+	>
 		<Heading></Heading>
 		<router-view name="player"></router-view>
 		<Radios @listen="currentlyListening"></Radios>
-		<Credits></Credits>
+		<!-- <Credits></Credits> -->
 	</div>
 </template>
 

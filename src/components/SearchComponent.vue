@@ -37,8 +37,8 @@ function clear() {
 </script>
 
 <template>
-	<li
-		class="p-3 flex border-b border-gray-200 fist:rounded-t-2xl last:border-0 last:rounded-b-2xl"
+	<div
+		class="pt-2 flex border-b border-gray-200 fist:rounded-t-2xl last:border-0 last:rounded-b-2xl"
 	>
 		<div
 			:class="{
@@ -71,5 +71,5 @@ function clear() {
 				</button>
 			</span>
 		</div>
-	</li>
+	</div>
 </template>

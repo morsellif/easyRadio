@@ -7,6 +7,7 @@ import Dropdown from './DropdownComponent.vue';
 import radios from '../assets/radios.json';
 import SearchComponent from './SearchComponent.vue';
 import SearchPlaceholder from './SearchPlaceholder.vue';
+import CreditsComponent from './CreditsComponent.vue';
 
 /* DATA */
 const lovedRadios: Ref<string[]> = ref([]);
@@ -101,43 +102,55 @@ const sortByPreferred = computed<string[]>(() => {
 </script>
 
 <template>
-	<ul class="bg-white border border-gray-200 rounded-3xl drop-shadow-md">
-		<li
-			class="flex p-3 border-b border-gray-200 fist:rounded-t-lg last:border-0 last:rounded-b-lg"
+	<div
+		class="bg-white border border-gray-200 rounded-3xl drop-shadow-md overflow-hidden flex flex-1 flex-col mb-3"
+	>
+		<div
+			class="flex flex-col p-3 border-b border-gray-200 fist:rounded-t-lg last:border-0 last:rounded-b-lg"
 		>
-			<div class="flex font-bold text-3xl grow flex-row">Radios</div>
-			<Dropdown class="flex justify-end" @filter="filterRadios"></Dropdown>
-		</li>
-		<SearchComponent
-			v-model="searchResults"
-			@searching="isSearching = $event"
-		></SearchComponent>
-		<SearchPlaceholder
-			:is-searching="isSearching"
-			:search-results="searchResults"
-		></SearchPlaceholder>
-		<Radio
-			v-for="index in radiosArray()"
-			:key="index"
-			:class="[
-				$route.params.radioName === index ? 'bg-gray-200' : 'hover:bg-gray-100',
-			]"
-			class="cursor-pointer"
-			:is-loved="isLoved(index)"
-			:name="index"
-			@loved-radio="loveGateway(index)"
-			@listen-radio="
-				$router.push({
-					name: 'play',
-					params: {
-						radioName: index,
-						streamUrl: radios[index].streamUrl,
-						type: radios[index].type,
-					},
-				})
-			"
-		></Radio>
-	</ul>
+			<div class="flex">
+				<div class="flex font-bold text-3xl grow flex-row">Radios</div>
+				<Dropdown class="flex justify-end" @filter="filterRadios"></Dropdown>
+			</div>
+			<SearchComponent
+				v-model="searchResults"
+				@searching="isSearching = $event"
+			></SearchComponent>
+		</div>
+
+		<nav class="overflow-y-auto overflow-x-hidden relative">
+			<ul class="overflow-x-hidden overflow-y-scroll relative">
+				<SearchPlaceholder
+					:is-searching="isSearching"
+					:search-results="searchResults"
+				></SearchPlaceholder>
+				<Radio
+					v-for="index in radiosArray()"
+					:key="index"
+					:class="[
+						$route.params.radioName === index
+							? 'bg-gray-200'
+							: 'hover:bg-gray-100',
+					]"
+					class="cursor-pointer"
+					:is-loved="isLoved(index)"
+					:name="index"
+					@loved-radio="loveGateway(index)"
+					@listen-radio="
+						$router.push({
+							name: 'play',
+							params: {
+								radioName: index,
+								streamUrl: radios[index].streamUrl,
+								type: radios[index].type,
+							},
+						})
+					"
+				></Radio>
+				<CreditsComponent v-if="isSearching"></CreditsComponent>
+			</ul>
+		</nav>
+	</div>
 </template>
 
 <style></style>
