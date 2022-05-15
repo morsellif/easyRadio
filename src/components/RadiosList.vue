@@ -60,7 +60,7 @@ function loveGateway(radioName: string) {
 }
 
 function radiosArray(): string[] {
-	if (isSearching.value && showSearch.value) {
+	if (showSearch.value) {
 		return searchResults.value;
 	}
 
@@ -133,7 +133,6 @@ const sortByPreferred = computed<string[]>(() => {
 			<ul class="overflow-x-hidden overflow-y-scroll relative">
 				<SearchPlaceholder
 					v-if="showSearch"
-					:is-searching="isSearching"
 					:search-results="searchResults"
 				></SearchPlaceholder>
 				<Radio
@@ -159,7 +158,7 @@ const sortByPreferred = computed<string[]>(() => {
 						})
 					"
 				></Radio>
-				<CreditsComponent v-if="!isSearching"></CreditsComponent>
+				<CreditsComponent v-if="!showSearch"></CreditsComponent>
 			</ul>
 		</nav>
 	</div>
