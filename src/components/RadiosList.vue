@@ -14,6 +14,7 @@ import StartSearchButton from './StartSearchButton.vue';
 const lovedRadios: Ref<string[]> = ref([]);
 const searchResults: Ref<string[]> = ref([]);
 const isSearching = ref(false);
+const showSearch = ref(false);
 const filter: Ref<string> = ref('All');
 
 /* METHODS */
@@ -70,6 +71,11 @@ function radiosArray(): string[] {
 	return sortByPreferred.value;
 }
 
+function showThings(e: Event) {
+	isSearching.value = e as unknown as boolean;
+	showSearch.value = e as unknown as boolean;
+}
+
 /* MOUNTED */
 onMounted(() => {
 	/* load `lovedRadios` from localStorage */
@@ -111,12 +117,16 @@ const sortByPreferred = computed<string[]>(() => {
 		>
 			<div class="flex">
 				<div class="flex font-bold text-3xl grow flex-row">Radios</div>
-				<StartSearchButton></StartSearchButton>
+				<StartSearchButton
+					v-if="!isSearching && !showSearch"
+					@click="showSearch = true"
+				></StartSearchButton>
 				<Dropdown class="flex justify-end" @filter="filterRadios"></Dropdown>
 			</div>
 			<SearchComponent
+				v-if="showSearch"
 				v-model="searchResults"
-				@searching="isSearching = $event"
+				@searching="showThings"
 			></SearchComponent>
 		</div>
 
