@@ -8,6 +8,7 @@ import radios from '../assets/radios.json';
 import SearchComponent from './SearchComponent.vue';
 import SearchPlaceholder from './SearchPlaceholder.vue';
 import CreditsComponent from './CreditsComponent.vue';
+import StartSearchButton from './StartSearchButton.vue';
 
 /* DATA */
 const lovedRadios: Ref<string[]> = ref([]);
@@ -110,6 +111,7 @@ const sortByPreferred = computed<string[]>(() => {
 		>
 			<div class="flex">
 				<div class="flex font-bold text-3xl grow flex-row">Radios</div>
+				<StartSearchButton></StartSearchButton>
 				<Dropdown class="flex justify-end" @filter="filterRadios"></Dropdown>
 			</div>
 			<SearchComponent
