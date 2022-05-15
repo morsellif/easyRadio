@@ -132,8 +132,7 @@ const sortByPreferred = computed<string[]>(() => {
 		<nav class="overflow-y-auto overflow-x-hidden relative">
 			<ul class="overflow-x-hidden overflow-y-scroll relative">
 				<SearchPlaceholder
-					v-if="showSearch"
-					:search-results="searchResults"
+					v-if="showSearch && searchResults.length <= 0"
 				></SearchPlaceholder>
 				<Radio
 					v-for="index in radiosArray()"
