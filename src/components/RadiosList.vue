@@ -8,11 +8,13 @@ import radios from '../assets/radios.json';
 import SearchComponent from './SearchComponent.vue';
 import SearchPlaceholder from './SearchPlaceholder.vue';
 import CreditsComponent from './CreditsComponent.vue';
+import StartSearchButton from './StartSearchButton.vue';
 
 /* DATA */
 const lovedRadios: Ref<string[]> = ref([]);
 const searchResults: Ref<string[]> = ref([]);
 const isSearching = ref(false);
+const showSearch = ref(false);
 const filter: Ref<string> = ref('All');
 
 /* METHODS */
@@ -58,7 +60,7 @@ function loveGateway(radioName: string) {
 }
 
 function radiosArray(): string[] {
-	if (isSearching.value) {
+	if (showSearch.value) {
 		return searchResults.value;
 	}
 
@@ -67,6 +69,11 @@ function radiosArray(): string[] {
 	}
 
 	return sortByPreferred.value;
+}
+
+function showThings(e: Event) {
+	isSearching.value = e as unknown as boolean;
+	showSearch.value = e as unknown as boolean;
 }
 
 /* MOUNTED */
@@ -110,19 +117,22 @@ const sortByPreferred = computed<string[]>(() => {
 		>
 			<div class="flex">
 				<div class="flex font-bold text-3xl grow flex-row">Radios</div>
+				<StartSearchButton
+					@click="showSearch = !showSearch"
+				></StartSearchButton>
 				<Dropdown class="flex justify-end" @filter="filterRadios"></Dropdown>
 			</div>
 			<SearchComponent
+				v-if="showSearch"
 				v-model="searchResults"
-				@searching="isSearching = $event"
+				@searching="showThings"
 			></SearchComponent>
 		</div>
 
 		<nav class="overflow-y-auto overflow-x-hidden relative">
 			<ul class="overflow-x-hidden overflow-y-scroll relative">
 				<SearchPlaceholder
-					:is-searching="isSearching"
-					:search-results="searchResults"
+					v-if="showSearch && searchResults.length <= 0"
 				></SearchPlaceholder>
 				<Radio
 					v-for="index in radiosArray()"
@@ -147,7 +157,7 @@ const sortByPreferred = computed<string[]>(() => {
 						})
 					"
 				></Radio>
-				<CreditsComponent v-if="!isSearching"></CreditsComponent>
+				<CreditsComponent v-if="!showSearch"></CreditsComponent>
 			</ul>
 		</nav>
 	</div>
