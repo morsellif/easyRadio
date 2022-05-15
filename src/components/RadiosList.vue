@@ -60,7 +60,7 @@ function loveGateway(radioName: string) {
 }
 
 function radiosArray(): string[] {
-	if (isSearching.value) {
+	if (isSearching.value && showSearch.value) {
 		return searchResults.value;
 	}
 
@@ -118,8 +118,7 @@ const sortByPreferred = computed<string[]>(() => {
 			<div class="flex">
 				<div class="flex font-bold text-3xl grow flex-row">Radios</div>
 				<StartSearchButton
-					v-if="!isSearching && !showSearch"
-					@click="showSearch = true"
+					@click="showSearch = !showSearch"
 				></StartSearchButton>
 				<Dropdown class="flex justify-end" @filter="filterRadios"></Dropdown>
 			</div>
@@ -133,6 +132,7 @@ const sortByPreferred = computed<string[]>(() => {
 		<nav class="overflow-y-auto overflow-x-hidden relative">
 			<ul class="overflow-x-hidden overflow-y-scroll relative">
 				<SearchPlaceholder
+					v-if="showSearch"
 					:is-searching="isSearching"
 					:search-results="searchResults"
 				></SearchPlaceholder>
