@@ -41,4 +41,4 @@ jobs:
       - name: Copy files to the production website with the AWS CLI
         run: |
           cd dist
-          aws s3 sync . s3://${{ secrets.BUCKET }}
+          aws s3 sync --delete . s3://${{ secrets.BUCKET }}
