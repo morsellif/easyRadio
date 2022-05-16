@@ -10,7 +10,7 @@ export function get(
 
 	if (createIfNotExists) {
 		if (!exists) {
-			localStorage.set(keyName, '');
+			localStorage.setItem(keyName, '');
 			exists = localStorage.getItem(keyName);
 		}
 	}
