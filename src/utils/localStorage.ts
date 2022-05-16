@@ -12,8 +12,12 @@ export function get(
 		if (!exists) {
 			localStorage.setItem(keyName, '');
 			exists = localStorage.getItem(keyName);
+			console.log(exists);
 		}
 	}
-
-	return JSON.parse(exists!);
+	try {
+		return JSON.parse(exists!);
+	} catch (e) {
+		return exists!;
+	}
 }
