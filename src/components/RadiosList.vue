@@ -117,7 +117,7 @@ const sortByPreferred = computed<string[]>(() => {
 		</div>
 
 		<nav class="overflow-y-auto overflow-x-hidden relative">
-			<ul class="overflow-x-hidden overflow-y-scroll relative">
+			<ul>
 				<SearchPlaceholder
 					v-if="showSearch && searchResults.length <= 0"
 				></SearchPlaceholder>
