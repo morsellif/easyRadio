@@ -37,6 +37,46 @@
 			"songKey": "title"
 		}
 	},
+	"Virgin Classic Rock": {
+		"streamUrl": "https://icy.unitedradio.it/VirginRockClassics.mp3",
+		"type": "mp3"
+	},
+	"Virgin Rock Hits": {
+		"streamUrl": "https://icy.unitedradio.it/VirginRockHits.mp3",
+		"type": "mp3"
+	},
+	"Virgin Rock Ballads": {
+		"streamUrl": "https://icy.unitedradio.it/Virgin_06.mp3",
+		"type": "mp3"
+	},
+	"Virgin Rock '70": {
+		"streamUrl": "https://icy.unitedradio.it/VirginRock70.mp3",
+		"type": "mp3"
+	},
+	"Virgin Rock '80": {
+		"streamUrl": "https://icy.unitedradio.it/VirginRock80.mp3",
+		"type": "mp3"
+	},
+	"Virgin Rock '90": {
+		"streamUrl": "https://icy.unitedradio.it/Virgin_03.mp3",
+		"type": "mp3"
+	},
+	"Virgin Rock 2K": {
+		"streamUrl": "https://icy.unitedradio.it/Virgin_02.mp3",
+		"type": "mp3"
+	},
+	"Virgin Hard Rock": {
+		"streamUrl": "https://icy.unitedradio.it/VirginHardRock.mp3",
+		"type": "mp3"
+	},
+	"Virgin Rock Party": {
+		"streamUrl": "https://icy.unitedradio.it/VirginRockParty.mp3",
+		"type": "mp3"
+	},
+	"Virgin Alternative Rock": {
+		"streamUrl": "https://icy.unitedradio.it/VirginRockAlternative.mp3",
+		"type": "mp3"
+	},
 	"Rai Radio 1": {
 		"streamUrl": "https://icestreaming.rai.it/1.mp3",
 		"type": "mp3",
