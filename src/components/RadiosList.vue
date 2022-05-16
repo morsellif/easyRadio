@@ -2,6 +2,8 @@
 <script setup lang="ts">
 import { onMounted, ref, Ref, computed } from 'vue';
 
+import { get, set } from './../utils/localStorage';
+
 import Radio from './RadioRow.vue';
 import Dropdown from './DropdownComponent.vue';
 import radios from '../assets/radios.json';
@@ -18,10 +20,6 @@ const showSearch = ref(false);
 const filter: Ref<string> = ref('All');
 
 /* METHODS */
-function parseLovedRadios(data: string) {
-	lovedRadios.value = JSON.parse(data);
-}
-
 function isLoved(radioName: string) {
 	return (
 		lovedRadios.value!.findIndex((element) => element === radioName) !== -1
@@ -30,7 +28,7 @@ function isLoved(radioName: string) {
 
 function love(radioName: string) {
 	lovedRadios.value!.push(radioName);
-	save();
+	set('lovedRadios', lovedRadios.value);
 }
 
 function unlove(radioName: string) {
@@ -40,11 +38,7 @@ function unlove(radioName: string) {
 	if (toUnlove > -1) {
 		lovedRadios.value!.splice(toUnlove, 1);
 	}
-	save();
-}
-
-function save() {
-	localStorage.setItem('lovedRadios', JSON.stringify(lovedRadios.value));
+	set('lovedRadios', lovedRadios.value);
 }
 
 function filterRadios(e: string) {
@@ -79,18 +73,11 @@ function showThings(e: Event) {
 /* MOUNTED */
 onMounted(() => {
 	/* load `lovedRadios` from localStorage */
-	let exists: string | null = localStorage.getItem('lovedRadios');
-
-	/* if `lovedRadios` does not exists, */
-	if (!exists) {
-		/* create it */
-		localStorage.setItem('lovedRadios', '[]');
-		/* load it */
-		exists = localStorage.getItem('lovedRadios');
+	lovedRadios.value = get('lovedRadios') as string[];
+	if (lovedRadios.value === null) {
+		set('lovedRadios', []);
+		lovedRadios.value = get('lovedRadios') as string[];
 	}
-
-	/* parse string to JSON */
-	parseLovedRadios(exists!);
 });
 
 /* COMPUTED */

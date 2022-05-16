@@ -4,16 +4,24 @@ import ListUl from './icons/ListUlIcon.vue';
 import CaretDown from './icons/CaretDownIcon.vue';
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue';
 import { ref, defineEmits, onMounted } from 'vue';
+import { get, set } from './../utils/localStorage';
 
 const filterName = ref('All');
 const emit = defineEmits(['filter']);
 
 function filter(newFilterName: string) {
 	filterName.value = newFilterName;
+	set('filter', newFilterName);
 	emit('filter', filterName.value);
 }
 
 onMounted(() => {
+	let savedFilter = get('filter');
+	if (savedFilter === null) {
+		set('filter', 'All');
+		savedFilter = get('filter');
+	}
+	filterName.value = savedFilter as string;
 	emit('filter', filterName.value);
 });
 </script>
