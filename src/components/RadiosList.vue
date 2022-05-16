@@ -73,7 +73,11 @@ function showThings(e: Event) {
 /* MOUNTED */
 onMounted(() => {
 	/* load `lovedRadios` from localStorage */
-	lovedRadios.value = get('lovedRadios', true) as string[];
+	lovedRadios.value = get('lovedRadios') as string[];
+	if (lovedRadios.value === null) {
+		set('lovedRadios', []);
+		lovedRadios.value = get('lovedRadios') as string[];
+	}
 });
 
 /* COMPUTED */
