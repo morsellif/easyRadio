@@ -140,8 +140,11 @@ watch(
 					</div>
 				</div>
 			</div>
-			<div class="flex justify-end flex-row grow" @click="changePlayback()">
-				<PlayerControls :playing="isPlaying"></PlayerControls>
+			<div class="flex justify-end flex-row grow">
+				<PlayerControls
+					:playing="isPlaying"
+					@click="changePlayback()"
+				></PlayerControls>
 			</div>
 		</div>
 	</div>
