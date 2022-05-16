@@ -3,15 +3,19 @@ import HeartFilled from './icons/HeartFilledIcon.vue';
 import ListUl from './icons/ListUlIcon.vue';
 import CaretDown from './icons/CaretDownIcon.vue';
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue';
-import { ref, defineEmits } from 'vue';
+import { ref, defineEmits, onMounted } from 'vue';
 
-const filterName = ref('Filter');
+const filterName = ref('All');
 const emit = defineEmits(['filter']);
 
 function filter(newFilterName: string) {
 	filterName.value = newFilterName;
 	emit('filter', filterName.value);
 }
+
+onMounted(() => {
+	emit('filter', filterName.value);
+});
 </script>
 
 <template>
