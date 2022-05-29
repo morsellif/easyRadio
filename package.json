@@ -1,6 +1,6 @@
 {
 	"name": "easy-radio",
-	"packageManager": "pnpm@7.1.5",
+	"packageManager": "pnpm@7.1.7",
 	"private": true,
 	"repository": {
 		"type": "git",
@@ -19,7 +19,7 @@
 		"prepare": "husky install"
 	},
 	"dependencies": {
-		"@headlessui/vue": "^1.6.2",
+		"@headlessui/vue": "^1.6.4",
 		"hls.js": "^1.1.5",
 		"vue": "^3.2.36",
 		"vue-router": "^4.0.15"
@@ -45,7 +45,7 @@
 		"vite": "^2.9.9",
 		"vite-plugin-eslint": "^1.6.1",
 		"vue-eslint-parser": "^8.3.0",
-		"vue-tsc": "^0.34.16"
+		"vue-tsc": "^0.35.0"
 	},
 	"lint-staged": {
 		"*.{js,jsx,ts,tsx,vue}": [
