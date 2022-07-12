@@ -138,8 +138,8 @@ const sortByPreferred = computed<string[]>(() => {
 							name: 'play',
 							params: {
 								radioName: index,
-								streamUrl: radios[index].streamUrl,
-								type: radios[index].type,
+								streamUrl: radios[index as keyof typeof radios].streamUrl,
+								type: radios[index as keyof typeof radios].type,
 							},
 						})
 					"
