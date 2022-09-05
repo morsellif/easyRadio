@@ -24,7 +24,7 @@ const routes = [
 			_from: RouteLocationNormalized,
 			next: NavigationGuardNext,
 		) => {
-			if (!to.params.streamUrl && !to.params.type) {
+			if (!to.query.streamUrl && !to.query.type) {
 				return next({ name: 'home' });
 			}
 			next();

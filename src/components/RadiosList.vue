@@ -136,7 +136,7 @@ const sortByPreferred = computed<string[]>(() => {
 					@listen-radio="
 						$router.push({
 							name: 'play',
-							params: {
+							query: {
 								radioName: index,
 								streamUrl: radios[index as keyof typeof radios].streamUrl,
 								type: radios[index as keyof typeof radios].type,

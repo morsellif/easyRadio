@@ -1,23 +1,22 @@
 <script setup lang="ts">
-import { ref, watch, onMounted, defineProps } from 'vue';
-import { useRouter } from 'vue-router';
+import { ref, watch, onMounted } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
 import Hls from 'hls.js';
 import PlayerControls from './PlayerControls.vue';
 import Spinner from './icons/SpinnerIcon.vue';
 import Circle from './icons/CircleIcon.vue';
 
 const router = useRouter();
+const route = useRoute();
 const media = ref<HTMLMediaElement | null>(null);
 
 let hls: Hls | null = null;
 const isPlaying = ref(false);
 const isBuffering = ref(false);
 
-const props = defineProps<{
-	radioName: string;
-	streamUrl: string;
-	type: string;
-}>();
+const radioName = ref(''); // route.query.radioName as string;
+const streamUrl = ref(''); // route.query.streamUrl as string;
+const type = ref(''); // route.query.type as string;
 
 /* check if Hls is supported natively by browser */
 function isHlsSupportedNatively() {
@@ -63,12 +62,12 @@ function loadMedia() {
 	stopMedia();
 
 	/* is m3u8 and browser does not support HLS natively*/
-	if (!isHlsSupportedNatively() && props.type == 'm3u8') {
+	if (!isHlsSupportedNatively() && type.value == 'm3u8') {
 		/* does browser support Hls.js library? */
 		if (Hls.isSupported()) {
 			hls = new Hls();
 
-			hls.loadSource(props.streamUrl);
+			hls.loadSource(streamUrl.value);
 			hls.attachMedia(media.value!);
 
 			hls.on(Hls.Events.MANIFEST_PARSED, () => {
@@ -80,7 +79,7 @@ function loadMedia() {
 		}
 	} else {
 		/* is m3u8 and browser supports HLS || is other media */
-		media.value!.src = props.streamUrl;
+		media.value!.src = streamUrl.value;
 		media.value!.addEventListener('loadedmetadata', () => {
 			setMediaSession();
 		});
@@ -90,7 +89,7 @@ function loadMedia() {
 function setMediaSession() {
 	if ('mediaSession' in navigator) {
 		navigator.mediaSession.metadata = new MediaMetadata({
-			title: props.radioName,
+			title: radioName.value,
 			artist: 'easyRadio',
 			album: '',
 		});
@@ -109,15 +108,20 @@ function setMediaSession() {
 }
 
 onMounted(() => {
+	radioName.value = route.query.radioName as string;
+	streamUrl.value = route.query.streamUrl as string;
+	type.value = route.query.type as string;
+
 	loadMedia();
 });
 
-watch(
-	() => [props.radioName, props.streamUrl, props.type],
-	() => {
-		loadMedia();
-	},
-);
+watch(route, (current) => {
+	radioName.value = current.query.radioName as string;
+	streamUrl.value = current.query.streamUrl as string;
+	type.value = current.query.type as string;
+
+	loadMedia();
+});
 </script>
 
 <template>
@@ -127,7 +131,7 @@ watch(
 		<div class="flex">
 			<div class="flex flex-col">
 				<div class="font-semibold text-xl text-left grow-0">
-					{{ props.radioName }}
+					{{ radioName }}
 				</div>
 				<div class="flex">
 					<div v-if="!isBuffering" class="flex justify-center pt-1 pl-1">
