@@ -1,27 +1,27 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@headlessui/vue': ^1.7.1
+  '@headlessui/vue': ^1.7.2
   '@tailwindcss/typography': ^0.5.7
   '@types/node': ^18.7.15
   '@typescript-eslint/eslint-plugin': ^5.37.0
   '@typescript-eslint/parser': ^5.37.0
   '@vitejs/plugin-vue': ^3.1.0
-  autoprefixer: ^10.4.9
+  autoprefixer: ^10.4.11
   eslint: ^8.23.1
   eslint-config-prettier: ^8.5.0
   eslint-plugin-prettier: ^4.2.1
-  eslint-plugin-vue: ^9.4.0
-  hls.js: ^1.2.2
+  eslint-plugin-vue: ^9.5.1
+  hls.js: ^1.2.3
   husky: ^8.0.1
   lint-staged: ^13.0.3
-  npm-check-updates: ^16.1.2
+  npm-check-updates: ^16.1.3
   only-allow: ^1.1.1
   postcss: ^8.4.16
   prettier: ^2.7.1
   tailwindcss: ^3.1.8
   typescript: ^4.8.3
-  vite: ^3.1.0
+  vite: ^3.1.2
   vite-plugin-eslint: ^1.8.1
   vue: ^3.2.39
   vue-eslint-parser: ^9.1.0
@@ -29,8 +29,8 @@ specifiers:
   vue-tsc: ^0.40.13
 
 dependencies:
-  '@headlessui/vue': 1.7.1_vue@3.2.39
-  hls.js: 1.2.2
+  '@headlessui/vue': 1.7.2_vue@3.2.39
+  hls.js: 1.2.3
   vue: 3.2.39
   vue-router: 4.1.5_vue@3.2.39
 
@@ -39,22 +39,22 @@ devDependencies:
   '@types/node': 18.7.15
   '@typescript-eslint/eslint-plugin': 5.37.0_22c5fnooleyfkzrkkgdmel5kmi
   '@typescript-eslint/parser': 5.37.0_irgkl5vooow2ydyo6aokmferha
-  '@vitejs/plugin-vue': 3.1.0_vite@3.1.0+vue@3.2.39
-  autoprefixer: 10.4.9_postcss@8.4.16
+  '@vitejs/plugin-vue': 3.1.0_vite@3.1.2+vue@3.2.39
+  autoprefixer: 10.4.11_postcss@8.4.16
   eslint: 8.23.1
   eslint-config-prettier: 8.5.0_eslint@8.23.1
   eslint-plugin-prettier: 4.2.1_cabrci5exjdaojcvd6xoxgeowu
-  eslint-plugin-vue: 9.4.0_eslint@8.23.1
+  eslint-plugin-vue: 9.5.1_eslint@8.23.1
   husky: 8.0.1
   lint-staged: 13.0.3
-  npm-check-updates: 16.1.2
+  npm-check-updates: 16.1.3
   only-allow: 1.1.1
   postcss: 8.4.16
   prettier: 2.7.1
   tailwindcss: 3.1.8_postcss@8.4.16
   typescript: 4.8.3
-  vite: 3.1.0
-  vite-plugin-eslint: 1.8.1_eslint@8.23.1+vite@3.1.0
+  vite: 3.1.2
+  vite-plugin-eslint: 1.8.1_eslint@8.23.1+vite@3.1.2
   vue-eslint-parser: 9.1.0_eslint@8.23.1
   vue-tsc: 0.40.13_typescript@4.8.3
 
@@ -108,8 +108,8 @@ packages:
     resolution: {integrity: sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==}
     dev: true
 
-  /@headlessui/vue/1.7.1_vue@3.2.39:
-    resolution: {integrity: sha512-mbwn1cT92aozb7GDsLvYBx3O44okBwN4FJEf9ZnncFl83XRnxkw73oGc4CwPsDGAelxvzkginSrgEiK+vUOXIg==}
+  /@headlessui/vue/1.7.2_vue@3.2.39:
+    resolution: {integrity: sha512-nmmFpQxnAy6zgf5r0pwdAH3Qw2IsSbTgvkpov9RkEVE8A6aPAT4iaAaPEAzdI+sPL5Wby05mhciJXSqtkLu+vQ==}
     engines: {node: '>=10'}
     peerDependencies:
       vue: ^3.2.0
@@ -454,14 +454,14 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@vitejs/plugin-vue/3.1.0_vite@3.1.0+vue@3.2.39:
+  /@vitejs/plugin-vue/3.1.0_vite@3.1.2+vue@3.2.39:
     resolution: {integrity: sha512-fmxtHPjSOEIRg6vHYDaem+97iwCUg/uSIaTzp98lhELt2ISOQuDo2hbkBdXod0g15IhfPMQmAxh4heUks2zvDA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: ^3.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 3.1.0
+      vite: 3.1.2
       vue: 3.2.39
     dev: true
 
@@ -746,15 +746,15 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /autoprefixer/10.4.9_postcss@8.4.16:
-    resolution: {integrity: sha512-Uu67eduPEmOeA0vyJby5ghu1AAELCCNSsLAjK+lz6kYzNM5sqnBO36MqfsjhPjQF/BaJM5U/UuFYyl7PavY/wQ==}
+  /autoprefixer/10.4.11_postcss@8.4.16:
+    resolution: {integrity: sha512-5lHp6DgRodxlBLSkzHOTcufWFflH1ewfy2hvFQyjrblBFlP/0Yh4O/Wrg4ow8WRlN3AAUFFLAQwX8hTptzqVHg==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
     peerDependencies:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.21.3
-      caniuse-lite: 1.0.30001397
+      caniuse-lite: 1.0.30001402
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -828,7 +828,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001397
+      caniuse-lite: 1.0.30001402
       electron-to-chromium: 1.4.206
       node-releases: 2.0.6
       update-browserslist-db: 1.0.5_browserslist@4.21.3
@@ -908,8 +908,8 @@ packages:
     engines: {node: '>=14.16'}
     dev: true
 
-  /caniuse-lite/1.0.30001397:
-    resolution: {integrity: sha512-SW9N2TbCdLf0eiNDRrrQXx2sOkaakNZbCjgNpPyMJJbiOrU5QzMIrXOVMRM1myBXTD5iTkdrtU/EguCrBocHlA==}
+  /caniuse-lite/1.0.30001402:
+    resolution: {integrity: sha512-Mx4MlhXO5NwuvXGgVb+hg65HZ+bhUYsz8QtDGDo2QmaJS2GBX47Xfi2koL86lc8K+l+htXeTEB/Aeqvezoo6Ew==}
     dev: true
 
   /chalk/3.0.0:
@@ -1468,8 +1468,8 @@ packages:
       prettier-linter-helpers: 1.0.0
     dev: true
 
-  /eslint-plugin-vue/9.4.0_eslint@8.23.1:
-    resolution: {integrity: sha512-Nzz2QIJ8FG+rtJaqT/7/ru5ie2XgT9KCudkbN0y3uFYhQ41nuHEaboLAiqwMcK006hZPQv/rVMRhUIwEGhIvfQ==}
+  /eslint-plugin-vue/9.5.1_eslint@8.23.1:
+    resolution: {integrity: sha512-Y0sL2RY7Xc9S8kNih9lbwHIDmewUg9bfas6WSzsOWRgDXhIHKxRBZYNAnVcXBFfE+bMWHUA5GLChl7TcTYUI8w==}
     engines: {node: ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: ^6.2.0 || ^7.0.0 || ^8.0.0
@@ -1878,8 +1878,8 @@ packages:
       function-bind: 1.1.1
     dev: true
 
-  /hls.js/1.2.2:
-    resolution: {integrity: sha512-T+plugLYzBG+QCGEdL6qxyXZAc54zisJaR0o3KsZQ8j/HveLeE+ouHd5sJOHvE9hvEyF3OffVP5EvDWnczdwXg==}
+  /hls.js/1.2.3:
+    resolution: {integrity: sha512-CC/vHi82ldiiydIhliNI3whlcepRXxI2jdpd/KKb6lyEv+74e7lXs4cGk5PHfTLxZMKOj6+m5LX9VAbvV/r7AQ==}
     dev: false
 
   /hosted-git-info/5.1.0:
@@ -2448,7 +2448,7 @@ packages:
     hasBin: true
 
   /natural-compare/1.4.0:
-    resolution: {integrity: sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=}
+    resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
 
   /negotiator/0.6.3:
@@ -2526,8 +2526,8 @@ packages:
       npm-normalize-package-bin: 2.0.0
     dev: true
 
-  /npm-check-updates/16.1.2:
-    resolution: {integrity: sha512-6ZnDkrGkQQ+tnCeMXIO7sxdTWwXiodzO02sOtyZzj9HbJqAf4qY0wdmTEkG7wBNggwlIksVxgyjCzSejMdv6qg==}
+  /npm-check-updates/16.1.3:
+    resolution: {integrity: sha512-cjFV+Mb5I5rZWVElJugp1cArdzlHQy6Tzi+1i6T72nzLNFN10x7OjA7iQXgFpqeN+U5Zwv8u0/XVCEWM9KxqhQ==}
     engines: {node: '>=14.14'}
     hasBin: true
     dependencies:
@@ -2556,6 +2556,7 @@ packages:
       semver-utils: 1.1.4
       source-map-support: 0.5.21
       spawn-please: 1.0.0
+      untildify: 4.0.0
       update-notifier: 6.0.2
       yaml: 2.1.1
     transitivePeerDependencies:
@@ -3531,6 +3532,11 @@ packages:
       crypto-random-string: 4.0.0
     dev: true
 
+  /untildify/4.0.0:
+    resolution: {integrity: sha512-KK8xQ1mkzZeg9inewmFVDNkg3l5LUhoq9kN6iWYB/CC9YMG8HA+c1Q8HwDe6dEX7kErrEVNVBO3fWsVq5iDgtw==}
+    engines: {node: '>=8'}
+    dev: true
+
   /update-browserslist-db/1.0.5_browserslist@4.21.3:
     resolution: {integrity: sha512-dteFFpCyvuDdr9S/ff1ISkKt/9YZxKjI9WlRR99c180GaztJtRa/fn18FdxGVKVsnPY7/a/FDN68mcvUmP4U7Q==}
     hasBin: true
@@ -3569,7 +3575,7 @@ packages:
     dev: true
 
   /util-deprecate/1.0.2:
-    resolution: {integrity: sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8=}
+    resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
     dev: true
 
   /validate-npm-package-license/3.0.4:
@@ -3586,7 +3592,7 @@ packages:
       builtins: 5.0.1
     dev: true
 
-  /vite-plugin-eslint/1.8.1_eslint@8.23.1+vite@3.1.0:
+  /vite-plugin-eslint/1.8.1_eslint@8.23.1+vite@3.1.2:
     resolution: {integrity: sha512-PqdMf3Y2fLO9FsNPmMX+//2BF5SF8nEWspZdgl4kSt7UvHDRHVVfHvxsD7ULYzZrJDGRxR81Nq7TOFgwMnUang==}
     peerDependencies:
       eslint: '>=7'
@@ -3596,11 +3602,11 @@ packages:
       '@types/eslint': 8.4.5
       eslint: 8.23.1
       rollup: 2.78.0
-      vite: 3.1.0
+      vite: 3.1.2
     dev: true
 
-  /vite/3.1.0:
-    resolution: {integrity: sha512-YBg3dUicDpDWFCGttmvMbVyS9ydjntwEjwXRj2KBFwSB8SxmGcudo1yb8FW5+M/G86aS8x828ujnzUVdsLjs9g==}
+  /vite/3.1.2:
+    resolution: {integrity: sha512-wTDKPkiVbeT+drTPdkuvjVIC/2vKKUc1w3qNOuwgpyvPCZF6fvdxB5v5WEcCsqaYea0zrwA4+XialJKCHM3oVQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
