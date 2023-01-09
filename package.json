@@ -1,6 +1,6 @@
 {
 	"name": "easy-radio",
-	"packageManager": "pnpm@7.21.0",
+	"packageManager": "pnpm@7.23.0",
 	"private": true,
 	"repository": {
 		"type": "git",
@@ -35,12 +35,12 @@
 		"eslint-config-prettier": "^8.6.0",
 		"eslint-plugin-prettier": "^4.2.1",
 		"eslint-plugin-vue": "^9.8.0",
-		"husky": "^8.0.2",
+		"husky": "^8.0.3",
 		"lint-staged": "^13.1.0",
 		"npm-check-updates": "^16.6.2",
 		"only-allow": "^1.1.1",
-		"postcss": "^8.4.20",
-		"prettier": "^2.8.1",
+		"postcss": "^8.4.21",
+		"prettier": "^2.8.2",
 		"tailwindcss": "^3.2.4",
 		"typescript": "^4.9.4",
 		"vite": "^3.2.5",
