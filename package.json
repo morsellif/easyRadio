@@ -1,6 +1,6 @@
 {
 	"name": "easy-radio",
-	"packageManager": "pnpm@7.32.0",
+	"packageManager": "pnpm@8.2.0",
 	"private": true,
 	"repository": {
 		"type": "git",
