@@ -61,8 +61,8 @@ function loadMedia() {
 	/* stop previously playing media */
 	stopMedia();
 
-	/* is m3u8 and browser does not support HLS natively*/
-	if (!isHlsSupportedNatively() && type.value == 'm3u8') {
+	/* is m3u8 and browser does not support HLS natively */
+	if (!isHlsSupportedNatively() && type.value === 'm3u8') {
 		/* does browser support Hls.js library? */
 		if (Hls.isSupported()) {
 			hls = new Hls();
@@ -136,11 +136,13 @@ watch(route, (current) => {
 				<div class="flex">
 					<div v-if="!isBuffering" class="flex justify-center pt-1 pl-1">
 						<Circle class="w-2 animate-ping"></Circle>
-						<div class="flex ml-2 font-bold">LIVE</div>
+						<div class="flex ml-2 font-bold uppercase">{{ $t('live') }}</div>
 					</div>
 					<div v-else class="flex justify-center pt-1">
 						<Spinner class="w-5 animate-spin"></Spinner>
-						<div class="flex ml-2 font-bold">BUFFERING</div>
+						<div class="flex ml-2 font-bold uppercase">
+							{{ $t('buffering') }}
+						</div>
 					</div>
 				</div>
 			</div>

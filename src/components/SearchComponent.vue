@@ -9,7 +9,7 @@ const searchValue = ref('');
 const emit = defineEmits(['update:modelValue', 'searching']);
 
 function updateSearch() {
-	let results: string[] = [];
+	const results: string[] = [];
 	const searchQuery = searchValue.value.toLowerCase();
 
 	let tmp = '';
@@ -53,7 +53,7 @@ function clear() {
 			<input
 				v-model="searchValue"
 				class="placeholder:italic placeholder:text-slate-400 block focus:outline-none pl-1 py-2 w-full rounded-3xl"
-				placeholder="Search for radios..."
+				:placeholder="$t('search')"
 				type="text"
 				name="search"
 				@keyup="updateSearch()"

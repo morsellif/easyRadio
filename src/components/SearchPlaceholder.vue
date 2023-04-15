@@ -8,7 +8,8 @@ import ListUlIcon from './icons/ListUlIcon.vue';
 			<ListUlIcon
 				class="fill-slate-200 w-40 align-middle block m-auto mb-3"
 			></ListUlIcon>
-			Start typing. <br />Results will appear here.
+			{{ $t('serachPlaceholder1Line') }}
+			<br />{{ $t('serachPlaceholder2Line') }}
 		</div>
 	</li>
 </template>
