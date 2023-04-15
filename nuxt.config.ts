@@ -10,6 +10,9 @@ export default defineNuxtConfig({
 		storage: 'localStorage',
 	}, */
 	build: {},
+	nitro: {
+		preset: 'vercel-edge',
+	},
 	postcss: {
 		plugins: {
 			tailwindcss: {},
