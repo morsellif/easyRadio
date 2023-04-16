@@ -34,11 +34,11 @@ export default defineNuxtConfig({
 		locales: [
 			{
 				code: 'en',
-				file: 'en-US.js',
+				file: 'en-US.json',
 			},
 			{
 				code: 'it',
-				file: 'it-IT.js',
+				file: 'it-IT.json',
 			},
 		],
 		strategy: 'no_prefix',
