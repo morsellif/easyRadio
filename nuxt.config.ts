@@ -20,6 +20,17 @@ export default defineNuxtConfig({
 		},
 	},
 	i18n: {
+		experimental: {
+			jsTsFormatResource: true,
+		},
+		precompile: {
+			strictMessage: false,
+			escapeHtml: true,
+		},
+		debug: false,
+		detectBrowserLanguage: {
+			useCookie: true,
+		},
 		locales: [
 			{
 				code: 'en',
