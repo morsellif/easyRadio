@@ -33,7 +33,7 @@ export default defineNuxtConfig({
 		},
 		locales: [
 			{
-				code: 'en',
+				code: 'en-US',
 				file: 'en-US.json',
 			},
 			{
