@@ -11,7 +11,7 @@ export default defineNuxtConfig({
 	}, */
 	build: {},
 	nitro: {
-		preset: 'vercel',
+		preset: 'vercel-edge',
 	},
 	postcss: {
 		plugins: {
