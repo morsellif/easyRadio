@@ -53,7 +53,7 @@ function clear() {
 			<input
 				v-model="searchValue"
 				class="placeholder:italic placeholder:text-slate-400 block focus:outline-none pl-1 py-2 w-full rounded-3xl"
-				:placeholder="$t('search')"
+				placeholder="Search for radios..."
 				type="text"
 				name="search"
 				@keyup="updateSearch()"

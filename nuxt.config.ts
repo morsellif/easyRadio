@@ -1,10 +1,9 @@
 export default defineNuxtConfig({
 	modules: [
 		'@pinia/nuxt',
-		// '@pinia-plugin-persistedstate/nuxt',
 		'@vueuse/nuxt',
 		'@nuxt/devtools',
-		'@nuxtjs/i18n',
+		// '@nuxtjs/i18n',
 	],
 	/* piniaPersistedstate: {
 		storage: 'localStorage',
@@ -19,7 +18,7 @@ export default defineNuxtConfig({
 			autoprefixer: {},
 		},
 	},
-	i18n: {
+	/* i18n: {
 		experimental: {
 			jsTsFormatResource: true,
 		},
@@ -34,7 +33,7 @@ export default defineNuxtConfig({
 		locales: ['en', 'it'],
 		strategy: 'no_prefix',
 		defaultLocale: 'en',
-	},
+	}, */
 	typescript: {},
 	css: ['~/assets/css/main.css'],
 	srcDir: './src/',

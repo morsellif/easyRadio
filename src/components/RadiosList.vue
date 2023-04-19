@@ -107,9 +107,7 @@ const sortByPreferred = computed<string[]>(() => {
 			class="flex flex-col p-3 border-b border-gray-200 fist:rounded-t-lg last:border-0 last:rounded-b-lg"
 		>
 			<div class="flex">
-				<div class="flex font-bold text-3xl grow flex-row">
-					{{ $t('radios') }}
-				</div>
+				<div class="flex font-bold text-3xl grow flex-row">Radios</div>
 				<StartSearchButton
 					@click="showSearch = !showSearch"
 				></StartSearchButton>

@@ -136,13 +136,11 @@ watch(route, (current) => {
 				<div class="flex">
 					<div v-if="!isBuffering" class="flex justify-center pt-1 pl-1">
 						<Circle class="w-2 animate-ping"></Circle>
-						<div class="flex ml-2 font-bold uppercase">{{ $t('live') }}</div>
+						<div class="flex ml-2 font-bold uppercase">Live</div>
 					</div>
 					<div v-else class="flex justify-center pt-1">
 						<Spinner class="w-5 animate-spin"></Spinner>
-						<div class="flex ml-2 font-bold uppercase">
-							{{ $t('buffering') }}
-						</div>
+						<div class="flex ml-2 font-bold uppercase">Buffering</div>
 					</div>
 				</div>
 			</div>
