@@ -128,9 +128,9 @@ watch(route, (current) => {
 	<div
 		class="bg-white border border-gray-200 rounded-3xl drop-shadow-md mb-4 p-4"
 	>
-		<div class="flex">
-			<div class="flex flex-col">
-				<div class="font-semibold text-xl text-left grow-0">
+		<div class="flex space-x-3 justify-center align-middle self-center">
+			<div class="flex flex-col grow content-start overflow-hidden">
+				<div class="font-semibold text-xl text-left truncate" :alt="radioName">
 					{{ radioName }}
 				</div>
 				<div class="flex">
@@ -144,7 +144,7 @@ watch(route, (current) => {
 					</div>
 				</div>
 			</div>
-			<div class="flex justify-end flex-row grow">
+			<div class="flex justify-end flex-row">
 				<PlayerControls
 					:playing="isPlaying"
 					@click="changePlayback()"
