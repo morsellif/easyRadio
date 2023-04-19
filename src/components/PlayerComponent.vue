@@ -126,7 +126,7 @@ watch(route, (current) => {
 
 <template>
 	<div
-		class="bg-white border border-gray-200 rounded-3xl drop-shadow-md mb-4 p-4"
+		class="bg-white border border-gray-200 rounded-3xl drop-shadow-sm mb-4 p-4"
 	>
 		<div class="flex space-x-3 justify-center align-middle self-center">
 			<div class="flex flex-col grow content-start overflow-hidden">
