@@ -39,8 +39,19 @@ export default defineNuxtConfig({
 	srcDir: './src/',
 	app: {
 		head: {
-			title: 'laSpesa',
-			meta: [{ name: 'description', content: '' }],
+			title: 'easyRadio',
+			meta: [
+				{
+					name: 'description',
+					content:
+						'Listen to the best italians webradios, all in one simple app.',
+				},
+				{
+					name: 'keywords',
+					content:
+						'listen, italians, webradio, easy, web app, radio, radio italiane, italiano, radio web',
+				},
+			],
 		},
 	},
 	ssr: true,
