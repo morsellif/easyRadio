@@ -4,7 +4,7 @@ import TowerBroadcastIcon from './icons/TowerBroadcastIcon.vue';
 
 <template>
 	<div
-		class="bg-white border border-gray-200 rounded-3xl drop-shadow-md mb-3 mt-3 p-1"
+		class="bg-white border border-gray-200 rounded-3xl drop-shadow-sm mb-3 mt-3 p-1"
 	>
 		<div class="flex flex-column bg-white border-1 justify-center rounded-3xl">
 			<div class="align-middle">

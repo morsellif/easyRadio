@@ -101,7 +101,7 @@ const sortByPreferred = computed<string[]>(() => {
 
 <template>
 	<div
-		class="bg-white border border-gray-200 rounded-3xl drop-shadow-md overflow-hidden flex flex-1 flex-col"
+		class="bg-white border border-gray-200 rounded-3xl drop-shadow-sm overflow-hidden flex flex-1 flex-col"
 	>
 		<div
 			class="flex flex-col p-3 border-b border-gray-200 fist:rounded-t-lg last:border-0 last:rounded-b-lg"
