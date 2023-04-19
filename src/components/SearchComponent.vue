@@ -9,7 +9,7 @@ const searchValue = ref('');
 const emit = defineEmits(['update:modelValue', 'searching']);
 
 function updateSearch() {
-	let results: string[] = [];
+	const results: string[] = [];
 	const searchQuery = searchValue.value.toLowerCase();
 
 	let tmp = '';

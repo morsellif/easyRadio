@@ -2,15 +2,19 @@
 <script setup lang="ts">
 import { onMounted, ref, Ref, computed } from 'vue';
 
+import { useRoute, useRouter } from 'vue-router';
+import radios from '../assets/radios.json';
 import { get, set } from './../utils/localStorage';
 
 import Radio from './RadioRow.vue';
 import Dropdown from './DropdownComponent.vue';
-import radios from '../assets/radios.json';
 import SearchComponent from './SearchComponent.vue';
 import SearchPlaceholder from './SearchPlaceholder.vue';
 import CreditsComponent from './CreditsComponent.vue';
 import StartSearchButton from './StartSearchButton.vue';
+
+const router = useRouter();
+const route = useRoute();
 
 /* DATA */
 const lovedRadios: Ref<string[]> = ref([]);
@@ -58,7 +62,7 @@ function radiosArray(): string[] {
 		return searchResults.value;
 	}
 
-	if (filter.value == 'Preferred') {
+	if (filter.value === 'Preferred') {
 		return lovedRadios.value;
 	}
 
@@ -125,7 +129,7 @@ const sortByPreferred = computed<string[]>(() => {
 					v-for="index in radiosArray()"
 					:key="index"
 					:class="[
-						$route.params.radioName === index
+						route.params.radioName === index
 							? 'bg-gray-200'
 							: 'hover:bg-gray-100',
 					]"
@@ -134,8 +138,8 @@ const sortByPreferred = computed<string[]>(() => {
 					:name="index"
 					@loved-radio="loveGateway(index)"
 					@listen-radio="
-						$router.push({
-							name: 'play',
+						router.push({
+							name: 'index-play',
 							query: {
 								radioName: index,
 								streamUrl: radios[index as keyof typeof radios].streamUrl,

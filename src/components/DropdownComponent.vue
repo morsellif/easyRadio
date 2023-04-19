@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue';
+import { ref, defineEmits, onMounted } from 'vue';
 import HeartFilled from './icons/HeartFilledIcon.vue';
 import ListUl from './icons/ListUlIcon.vue';
 import CaretDown from './icons/CaretDownIcon.vue';
-import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue';
-import { ref, defineEmits, onMounted } from 'vue';
 import { get, set } from './../utils/localStorage';
 
 const filterName = ref('All');
@@ -33,7 +33,9 @@ onMounted(() => {
 				<MenuButton
 					class="inline-flex w-full border-gray-500 border justify-center rounded-3xl px-4 py-2 text-sm font-medium text-black hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
 				>
-					<div class="text-sm">{{ filterName }}</div>
+					<div class="text-sm">
+						{{ filterName }}
+					</div>
 					<CaretDown class="w-3 ml-3 fill-black"></CaretDown>
 				</MenuButton>
 			</div>
@@ -58,8 +60,8 @@ onMounted(() => {
 								class="group flex w-full items-center rounded-3xl px-2 py-2 text-sm text-gray-900"
 								@click="filter('Preferred')"
 							>
-								<HeartFilled class="ml-1 mr-3 w-7 fill-red-500"></HeartFilled
-								>Preferred
+								<HeartFilled class="ml-1 mr-3 w-7 fill-red-500"></HeartFilled>
+								Preferred
 							</button>
 						</MenuItem>
 						<MenuItem v-slot="{ active }">
@@ -70,7 +72,7 @@ onMounted(() => {
 								class="group flex w-full items-center rounded-3xl px-2 py-2 text-sm text-gray-900"
 								@click="filter('All')"
 							>
-								<ListUl class="ml-2 mr-4 w-5"></ListUl>All
+								<ListUl class="ml-2 mr-4 w-5"></ListUl> All
 							</button>
 						</MenuItem>
 					</div>

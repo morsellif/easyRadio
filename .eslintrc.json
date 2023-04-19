@@ -1,34 +1,45 @@
 {
 	"root": true,
-	"parser": "vue-eslint-parser",
 	"env": {
 		"browser": true,
 		"es2021": true,
 		"node": true
 	},
-	"plugins": ["@typescript-eslint", "prettier"],
 	"extends": [
 		"eslint:recommended",
-		"plugin:vue/base",
+		// "plugin:vue/base",
 		"plugin:vue/vue3-essential",
 		"plugin:vue/vue3-strongly-recommended",
 		"plugin:vue/vue3-recommended",
+		"plugin:@typescript-eslint/recommended",
+		"@nuxtjs/eslint-config-typescript",
 		"prettier"
-
-		// 'plugin:vue/vue3-essential',
-		// 'plugin:vue/vue3-strongly-recommended',
-		// 'plugin:vue/vue3-recommended'
 	],
+	"plugins": ["@typescript-eslint", "prettier"],
 	"rules": {
 		"@typescript-eslint/interface-name-prefix": "off",
 		"@typescript-eslint/explicit-function-return-type": "off",
 		"@typescript-eslint/explicit-module-boundary-types": "off",
 		"@typescript-eslint/no-explicit-any": "off",
 		"@typescript-eslint/no-non-null-assertion": "off",
-		"@typescript-eslint/no-unused-vars": ["off", { "argsIgnorePattern": "^_" }],
+		"no-use-before-define": "off",
+		"@typescript-eslint/no-unused-vars": [
+			"error",
+			{
+				"argsIgnorePattern": "^_",
+				"varsIgnorePattern": "^_",
+				"ignoreRestSiblings": true
+			}
+		],
+
+		"no-console": "off",
+		"vue/multi-word-component-names": "off",
+		"vue/one-component-per-file": "off",
+		"vue/require-default-prop": "off",
+		"vue/no-multiple-template-root": "off",
+		"camelcase": "off",
+
 		"prettier/prettier": ["error", {}, { "usePrettierrc": true }]
-		// override/add rules settings here, such as:
-		// 'vue/no-unused-vars': 'error'
 	},
 	"parserOptions": {
 		"parser": "@typescript-eslint/parser",
