@@ -27,7 +27,7 @@
 			"songKey": "title"
 		}
 	},
-	"Virgin Radio": {
+	"Virgin": {
 		"streamUrl": "https://icecast.unitedradio.it/Virgin.mp3",
 		"type": "mp3",
 
@@ -77,7 +77,7 @@
 		"streamUrl": "https://icy.unitedradio.it/VirginRockAlternative.mp3",
 		"type": "mp3"
 	},
-	"Rai Radio 1": {
+	"Radio 1": {
 		"streamUrl": "https://icestreaming.rai.it/1.mp3",
 		"type": "mp3",
 
@@ -87,7 +87,7 @@
 			"songKey": "dirette[4].currentSong.title"
 		}
 	},
-	"Rai Radio 2": {
+	"Radio 2": {
 		"streamUrl": "https://icestreaming.rai.it/2.mp3",
 		"type": "mp3",
 
@@ -97,7 +97,7 @@
 			"songKey": "dirette[3].currentSong.title"
 		}
 	},
-	"Rai Radio 3": {
+	"Radio 3": {
 		"streamUrl": "https://icestreaming.rai.it/3.mp3",
 		"type": "mp3",
 		"currentlyPlaying": {
@@ -106,31 +106,31 @@
 			"songKey": "dirette[12].currentSong.title"
 		}
 	},
-	"Rai Radio 4 Light": {
+	"Radio 4 Light": {
 		"type": "mp3",
 		"streamUrl": " https://icestreaming.rai.it/4.mp3"
 	},
-	"Rai Radio 5 Classica": {
+	"Radio 5 Classica": {
 		"type": "mp3",
 		"streamUrl": " https://icestreaming.rai.it/5.mp3"
 	},
-	"Rai IsoRadio": {
+	"IsoRadio": {
 		"type": "mp3",
 		"streamUrl": "https://icestreaming.rai.it/6.mp3"
 	},
-	"Rai Gr Parlamento": {
+	"Gr Parlamento": {
 		"type": "mp3",
 		"streamUrl": "https://icestreaming.rai.it/7.mp3"
 	},
-	"Rai Radio 8 Opera": {
+	"Radio 8 Opera": {
 		"type": "mp3",
 		"streamUrl": "https://icestreaming.rai.it/11.mp3"
 	},
-	"Rai Radio 6 Teca": {
+	"Radio 6 Teca": {
 		"type": "mp3",
 		"streamUrl": "https://icestreaming.rai.it/9.mp3"
 	},
-	"Rai Radio 7 Live": {
+	"Radio 7 Live": {
 		"type": "mp3",
 		"streamUrl": " https://icestreaming.rai.it/10.mp3"
 	},
@@ -262,7 +262,7 @@
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/um057.mp3"
 	},
-	"Radio Bau & Co": {
+	"Bau & Co": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/RadioBAU.mp3"
 	},
@@ -279,7 +279,7 @@
 		"type": "mp3",
 		"streamUrl": "https://icecast.unitedradio.it/r101_mp3"
 	},
-	"Radio Modena90": {
+	"Modena90": {
 		"type": "mp3",
 
 		"streamUrl": "http://onair15.xdevel.com:8502/;stream.mp3"
@@ -300,11 +300,11 @@
 		"type": "m3u8",
 		"streamUrl": "https://dd782ed59e2a4e86aabf6fc508674b59.msvdn.net/audiostream/S97044836/tbbP8T1ZRPBL/playlist_audio.m3u8"
 	},
-	"Radio Studio Più": {
+	"Studio Più": {
 		"streamUrl": "http://www.studiopiu.net:8010/;stream.nsv",
 		"type": "mp3"
 	},
-	"Radio Number One": {
+	"Number One": {
 		"type": "mp3",
 		"streamUrl": "https://str04.fluidstream.net/rn1.mp3"
 	},
@@ -312,16 +312,16 @@
 		"streamUrl": "https://radioitaliasmi-lh.akamaihd.net/i/radioitaliasmi_1@329643/master.m3u8",
 		"type": "m3u8"
 	},
-	"Radio Kiss Kiss": {
+	"KissKiss": {
 		"type": "mp3",
 
 		"streamUrl": "https://ice07.fluidstream.net/KissKiss.mp3"
 	},
-	"Radio Capital": {
+	"Capital": {
 		"streamUrl": "https://4c4b867c89244861ac216426883d1ad0.msvdn.net/radiocapital/radiocapital/master_ma.m3u8",
 		"type": "m3u8"
 	},
-	"Radio Capital Music": {
+	"Capital Music": {
 		"streamUrl": "https://capital_wr_01-lh.akamaihd.net/i/WebRadio1_1@14078/index_96_a-p.m3u8",
 		"type": "m3u8"
 	},
