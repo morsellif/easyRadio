@@ -134,19 +134,19 @@
 		"type": "mp3",
 		"streamUrl": " https://icestreaming.rai.it/10.mp3"
 	},
-	"Radio Monte Carlo": {
+	"RMC": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/RMC.mp3"
 	},
-	"Radio Monte Carlo Planet": {
+	"RMC Planet": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb026"
 	},
-	"Radio Monte Carlo Jazz": {
+	"RMC Jazz": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb019"
 	},
-	"Radio Monte Carlo Hits": {
+	"RMC Hits": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb001"
 	},
@@ -154,75 +154,75 @@
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb002"
 	},
-	"Radio Monte Carlo Italia": {
+	"RMC Italia": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb005"
 	},
-	"Radio Monte Carlo VIP Lounge": {
+	"RMC VIP Lounge": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb020"
 	},
-	"Radio Monte Carlo Nights Story": {
+	"RMC Nights Story": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb012"
 	},
-	"Radio Monte Carlo R&B": {
+	"RMC R&B": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb003"
 	},
-	"Radio Monte Carlo Love Songs": {
+	"RMC Love Songs": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb006"
 	},
-	"Radio Monte Carlo Great Artists": {
+	"RMC Great Artists": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb007"
 	},
-	"Radio Monte Carlo 80": {
+	"RMC 80": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb008"
 	},
-	"Radio Monte Carlo 90": {
+	"RMC 90": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb009"
 	},
-	"Radio Monte Carlo Marine": {
+	"RMC Marine": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb010"
 	},
-	"Radio Monte Carlo Cool": {
+	"RMC Cool": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb004"
 	},
-	"Radio Monte Carlo New Classics": {
+	"RMC New Classics": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb011"
 	},
-	"Radio Monte Carlo Acoustic": {
+	"RMC Acoustic": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb016"
 	},
-	"Radio Monte Carlo Voyage Voyage": {
+	"RMC Voyage Voyage": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb022"
 	},
-	"Radio Monte Carlo Disco Funk": {
+	"RMC Disco Funk": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb025"
 	},
-	"Radio Monte Carlo Romantic Rock": {
+	"RMC Romantic Rock": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb015"
 	},
-	"Radio Monte Carlo Running": {
+	"RMC Running": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb021"
 	},
-	"Radio Monte Carlo Party": {
+	"RMC Party": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb018"
 	},
-	"Radio Monte Carlo Fitness": {
+	"RMC Fitness": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb023"
 	},
