@@ -17,7 +17,7 @@
 		"streamUrl": "http://onair11.xdevel.com:8014/;stream.mp3",
 		"type": "mp3"
 	},
-	"Radio 105": {
+	"R105": {
 		"streamUrl": "https://icecast.unitedradio.it/Radio105.mp3",
 		"type": "mp3",
 
@@ -134,19 +134,19 @@
 		"type": "mp3",
 		"streamUrl": " https://icestreaming.rai.it/10.mp3"
 	},
-	"Radio Monte Carlo": {
+	"RMC": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/RMC.mp3"
 	},
-	"Radio Monte Carlo Planet": {
+	"RMC Planet": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb026"
 	},
-	"Radio Monte Carlo Jazz": {
+	"RMC Jazz": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb019"
 	},
-	"Radio Monte Carlo Hits": {
+	"RMC Hits": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb001"
 	},
@@ -154,75 +154,75 @@
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb002"
 	},
-	"Radio Monte Carlo Italia": {
+	"RMC Italia": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb005"
 	},
-	"Radio Monte Carlo VIP Lounge": {
+	"RMC VIP Lounge": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb020"
 	},
-	"Radio Monte Carlo Nights Story": {
+	"RMC Nights Story": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb012"
 	},
-	"Radio Monte Carlo R&B": {
+	"RMC R&B": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb003"
 	},
-	"Radio Monte Carlo Love Songs": {
+	"RMC Love Songs": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb006"
 	},
-	"Radio Monte Carlo Great Artists": {
+	"RMC Great Artists": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb007"
 	},
-	"Radio Monte Carlo 80": {
+	"RMC 80": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb008"
 	},
-	"Radio Monte Carlo 90": {
+	"RMC 90": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb009"
 	},
-	"Radio Monte Carlo Marine": {
+	"RMC Marine": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb010"
 	},
-	"Radio Monte Carlo Cool": {
+	"RMC Cool": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb004"
 	},
-	"Radio Monte Carlo New Classics": {
+	"RMC New Classics": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb011"
 	},
-	"Radio Monte Carlo Acoustic": {
+	"RMC Acoustic": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb016"
 	},
-	"Radio Monte Carlo Voyage Voyage": {
+	"RMC Voyage Voyage": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb022"
 	},
-	"Radio Monte Carlo Disco Funk": {
+	"RMC Disco Funk": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb025"
 	},
-	"Radio Monte Carlo Romantic Rock": {
+	"RMC Romantic Rock": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb015"
 	},
-	"Radio Monte Carlo Running": {
+	"RMC Running": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb021"
 	},
-	"Radio Monte Carlo Party": {
+	"RMC Party": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb018"
 	},
-	"Radio Monte Carlo Fitness": {
+	"RMC Fitness": {
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/rmcweb023"
 	},
@@ -266,16 +266,16 @@
 		"type": "mp3",
 		"streamUrl": "https://icy.unitedradio.it/RadioBAU.mp3"
 	},
-	"Radio LatteMiele": {
+	"LatteMiele": {
 		"type": "mp3",
 
 		"streamUrl": "https://sr15.inmystream.it/stream/lattemiele"
 	},
-	"Radio RDS": {
+	"RDS": {
 		"streamUrl": "https://stream.rds.radio/audio/rds.stream_aac/chunklist.m3u8",
 		"type": "m3u8"
 	},
-	"Radio R101": {
+	"R101": {
 		"type": "mp3",
 		"streamUrl": "https://icecast.unitedradio.it/r101_mp3"
 	},
@@ -288,7 +288,7 @@
 		"streamUrl": "http://onair18.xdevel.com:8230/;stream.mp3",
 		"type": "mp3"
 	},
-	"Radio Dee Jay": {
+	"DEEJAY": {
 		"streamUrl": "https://streamcdnb1-4c4b867c89244861ac216426883d1ad0.msvdn.net/radiodeejay/radiodeejay/master_ma.m3u8",
 		"type": "m3u8"
 	},
@@ -296,7 +296,7 @@
 		"streamUrl": "https://ilsole24ore-radio.akamaized.net/hls/live/2035301/radio24/playlist-48000.m3u8",
 		"type": "m3u8"
 	},
-	"Radio RTL 102.5": {
+	"RTL 102.5": {
 		"type": "m3u8",
 		"streamUrl": "https://dd782ed59e2a4e86aabf6fc508674b59.msvdn.net/audiostream/S97044836/tbbP8T1ZRPBL/playlist_audio.m3u8"
 	},
@@ -325,7 +325,7 @@
 		"streamUrl": "https://capital_wr_01-lh.akamaihd.net/i/WebRadio1_1@14078/index_96_a-p.m3u8",
 		"type": "m3u8"
 	},
-	"Radio M2O": {
+	"M2O": {
 		"streamUrl": "https://4c4b867c89244861ac216426883d1ad0.msvdn.net/radiom2o/radiom2o/master_ma.m3u8",
 		"type": "m3u8"
 	},
