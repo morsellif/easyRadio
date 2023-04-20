@@ -341,7 +341,7 @@
 		"streamUrl": "https://ice02.fluidstream.net/birikina.mp3?FLID=1&type=.mp3",
 		"type": "mp3"
 	},
-	"BBC International Service": {
+	"BBC World Service": {
 		"streamUrl": "https://stream.live.vc.bbcmedia.co.uk/bbc_world_service",
 		"type": "mp3"
 	}
