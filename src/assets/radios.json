@@ -342,7 +342,7 @@
 		"type": "mp3"
 	},
 	"BBC International Service": {
-		"streamUrl": "http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/nonuk/sbr_low/ak/bbc_world_service.m3u8",
-		"type": "m3u8"
+		"streamUrl": "https://stream.live.vc.bbcmedia.co.uk/bbc_world_service",
+		"type": "mp3"
 	}
 }
