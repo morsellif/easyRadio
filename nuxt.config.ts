@@ -16,6 +16,7 @@ export default defineNuxtConfig({
 		plugins: {
 			tailwindcss: {},
 			autoprefixer: {},
+			...(process.env.NODE_ENV === 'production' ? { cssnano: {} } : {}),
 		},
 	},
 	/* i18n: {
