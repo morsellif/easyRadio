@@ -38,7 +38,7 @@ function clear() {
 
 <template>
 	<div
-		class="pt-2 flex border-b border-gray-200 fist:rounded-t-2xl last:border-0 last:rounded-b-2xl"
+		class="pt-2 flex border-b border-gray-200 first:rounded-t-2xl last:border-0 last:rounded-b-2xl"
 	>
 		<div
 			:class="{

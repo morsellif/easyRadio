@@ -119,7 +119,7 @@ const sortByPreferred = computed<string[]>(() => {
 		class="bg-white border border-gray-200 rounded-3xl drop-shadow-sm overflow-hidden flex flex-1 flex-col"
 	>
 		<div
-			class="flex flex-col p-3 border-b border-gray-200 fist:rounded-t-lg last:border-0 last:rounded-b-lg"
+			class="flex flex-col p-3 border-b border-gray-200 first:rounded-t-lg last:border-0 last:rounded-b-lg"
 		>
 			<div class="flex">
 				<div class="flex font-bold text-3xl grow flex-row">Radios</div>

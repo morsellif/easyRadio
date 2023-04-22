@@ -12,7 +12,7 @@ defineEmits(['listenRadio', 'lovedRadio']);
 
 <template>
 	<div
-		class="flex border-b border-gray-200 fist:rounded-t-2xl last:border-0 last:rounded-b-3xl"
+		class="flex border-b border-gray-200 first:rounded-t-2xl last:border-0 last:rounded-b-3xl"
 	>
 		<div
 			class="font-medium text-xl grow flex flex-row p-3"
