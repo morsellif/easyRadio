@@ -11,7 +11,7 @@ defineEmits(['listenRadio', 'lovedRadio']);
 </script>
 
 <template>
-	<li
+	<div
 		class="flex border-b border-gray-200 fist:rounded-t-2xl last:border-0 last:rounded-b-3xl"
 	>
 		<div
@@ -23,7 +23,7 @@ defineEmits(['listenRadio', 'lovedRadio']);
 		<div class="flex justify-end flex-row p-3" @click="$emit('lovedRadio')">
 			<FavouriteButton :is-loved="isLoved"></FavouriteButton>
 		</div>
-	</li>
+	</div>
 </template>
 
 <style></style>
