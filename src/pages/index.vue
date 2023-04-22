@@ -28,7 +28,7 @@ function currentlyListening(e: {
 
 <template>
 	<div
-		class="container mx-auto max-w-xs h-screen rounded-3xl flex flex-col flex-1 relative mb-0 pb-9"
+		class="container mx-auto max-w-xs h-full rounded-3xl flex flex-col flex-1 relative mb-0 pb-9"
 	>
 		<HeadingComponent />
 		<NuxtPage />
