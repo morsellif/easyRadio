@@ -7,12 +7,14 @@ interface ListeningData {
 	radioName: string;
 	streamUrl: string;
 	type: string;
+	tags: string[];
 }
 
 const currentlyListeningData = ref<ListeningData>({
 	radioName: '',
 	streamUrl: '',
 	type: '',
+	tags: [],
 });
 
 function currentlyListening(e: {
