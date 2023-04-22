@@ -136,6 +136,7 @@ const sortByPreferred = computed<string[]>(() => {
 					class="cursor-pointer"
 					:is-loved="isLoved(index)"
 					:name="index"
+					:tags="radios[index as keyof typeof radios].tags"
 					@loved-radio="loveGateway(index)"
 					@listen-radio="
 						router.push({
