@@ -13,3 +13,17 @@ body {
 div#__nuxt {
 	@apply h-full;
 }
+
+input:-webkit-autofill {
+	-webkit-text-fill-color: theme('colors.gray.800') !important;
+}
+
+@layer base {
+	input[type='number']::-webkit-outer-spin-button,
+	input[type='number']::-webkit-inner-spin-button,
+	input[type='number'] {
+		-webkit-appearance: none;
+		margin: 0;
+		-moz-appearance: textfield !important;
+	}
+}
