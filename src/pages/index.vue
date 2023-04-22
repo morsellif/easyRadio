@@ -28,10 +28,11 @@ function currentlyListening(e: {
 
 <template>
 	<div
-		class="container mx-auto max-w-xs h-full rounded-3xl flex flex-col flex-1 relative mb-0 pb-9"
+		class="container mx-auto max-w-xs h-full rounded-3xl flex flex-col flex-1 relative space-y-4 mt-4"
 	>
 		<HeadingComponent />
-		<NuxtPage />
 		<RadiosList @listen="currentlyListening" />
+		<NuxtPage />
+		<div class="h-4"></div>
 	</div>
 </template>

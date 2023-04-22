@@ -125,9 +125,7 @@ watch(route, (current) => {
 </script>
 
 <template>
-	<div
-		class="bg-white border border-gray-200 rounded-3xl drop-shadow-sm mb-4 p-4"
-	>
+	<div class="bg-white border border-gray-200 rounded-3xl drop-shadow-sm p-4">
 		<div class="flex space-x-3 justify-center align-middle self-center">
 			<div class="flex flex-col grow content-start overflow-hidden">
 				<div class="font-semibold text-xl text-left truncate" :alt="radioName">
