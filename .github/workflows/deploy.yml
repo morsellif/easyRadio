@@ -1,13 +1,15 @@
 name: 'Deploy'
-
+env:
+  VERCEL_ORD_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PRODUCT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 on:
   pull_request:
     branches: [main]
     types: [closed]
 
 jobs:
-  deploy:
-    name: Deploy
+  deploy-production:
+    name: Deploy to production
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true
     steps:
@@ -30,15 +32,23 @@ jobs:
         with:
           version: 7.0.0
           run_install: true
-      - name: Build
-        run: pnpm build
-      - name: Set AWS credentials
-        uses: aws-actions/configure-aws-credentials@v2
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-west-1
-      - name: Copy files to the production website with the AWS CLI
-        run: |
-          cd dist
-          aws s3 sync --delete . s3://${{ secrets.BUCKET }}
+      # - name: Build
+      #  run: pnpm build
+      - name: Install Vercel CLI
+        run: pnpm install --global vercel@latest
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Build Project Artifacts
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Deploy Project Artifacts to Vercel
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+      # - name: Set AWS credentials
+      #   uses: aws-actions/configure-aws-credentials@v2
+      #   with:
+      #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     aws-region: eu-west-1
+      # - name: Copy files to the production website with the AWS CLI
+      #   run: |
+      #     cd dist
+      #     aws s3 sync --delete . s3://${{ secrets.BUCKET }}
