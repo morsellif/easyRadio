@@ -33,6 +33,6 @@ function currentlyListening(e: {
 		<HeadingComponent />
 		<RadiosList @listen="currentlyListening" />
 		<NuxtPage />
-		<div class="h-4"></div>
+		<div class="h-[30px]"></div>
 	</div>
 </template>
