@@ -42,3 +42,4 @@ CHANGELOG.md
 
 .eslintcache
 .env
+.vercel
