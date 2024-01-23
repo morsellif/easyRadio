@@ -1,6 +1,5 @@
 /* eslint-disable vue/no-use-v-if-with-v-for */
 <script setup lang="ts">
-import { onMounted, ref, Ref, computed } from 'vue';
 import { useScroll } from '@vueuse/core';
 
 import { useRoute, useRouter } from 'vue-router';

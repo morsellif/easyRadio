@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue';
-import { ref, defineEmits, onMounted } from 'vue';
 import HeartFilled from './icons/HeartFilledIcon.vue';
 import ListUl from './icons/ListUlIcon.vue';
 import CaretDown from './icons/CaretDownIcon.vue';

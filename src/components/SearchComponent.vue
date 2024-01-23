@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineEmits, ref } from 'vue';
 import MagnifyingGlassIcon from './icons/MagnifyingGlassIcon.vue';
 import radios from './../assets/radios.json';
 import XIcon from './icons/XIcon.vue';
