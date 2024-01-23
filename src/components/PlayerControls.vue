@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
 import Play from './icons/PlayIcon.vue';
 import Pause from './icons/PauseIcon.vue';
 

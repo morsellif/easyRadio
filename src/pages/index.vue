@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import HeadingComponent from '../components/HeadingComponent.vue';
 import RadiosList from '../components/RadiosList.vue';
 

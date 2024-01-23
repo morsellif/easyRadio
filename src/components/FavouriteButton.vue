@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
-
 import HeartFilled from './icons/HeartFilledIcon.vue';
 import HeartOutline from './icons/HeartOutlineIcon.vue';
 
