@@ -18,7 +18,7 @@ jobs:
       - name: Setup
         uses: ./gh-actions/setup
       - name: Prettier
-        run: bun prettier:check
+        run: bun run prettier:check
 
   eslint:
     name: Eslint
@@ -29,7 +29,7 @@ jobs:
       - name: Setup
         uses: ./gh-actions/setup
       - name: ESLint
-        run: bun lint
+        run: bun run lint
 
   typecheck:
     name: Typecheck
@@ -40,7 +40,7 @@ jobs:
       - name: Setup
         uses: ./gh-actions/setup
       - name: TypeScript
-        run: bun typecheck
+        run: bun run typecheck
   build:
     name: Build
     runs-on: ubuntu-latest
@@ -50,4 +50,4 @@ jobs:
       - name: Setup
         uses: ./gh-actions/setup
       - name: Build
-        run: bun build
+        run: bun run build
