@@ -17,7 +17,7 @@
 		"prettier": "prettier --write \"./src/**/*.{ts,tsx,js,vue}\"",
 		"prettier:check": "prettier --check \"./src/**/*.{ts,tsx,js,vue}\"",
 		"lint": "eslint --ext .ts,vue --ignore-path .gitignore . --fix",
-		"prepare": "husky install",
+		"prepare": "husky",
 		"vercel-build": "NODE_ENV=production nuxt build"
 	},
 	"dependencies": {
