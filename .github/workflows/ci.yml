@@ -1,135 +1,53 @@
 name: 'CI'
-# env:
-#   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-#   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
 on:
   pull_request:
     branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
 
 jobs:
   prettier:
     name: Prettier check
     runs-on: ubuntu-latest
     steps:
-      - name: Delete previous runs
-        uses: styfle/cancel-workflow-action@0.12.1
       - name: Checkout repo
         uses: actions/checkout@v4
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-      - name: Cache pnpm modules
-        uses: actions/cache@v4
-        with:
-          path: '~/.pnpm-store'
-          key: ${{ runner.os }}-
-      - uses: pnpm/action-setup@v3.0.0
-        with:
-          version: 8.3.1
-          run_install: true
+      - name: Setup
+        uses: ./gh-actions/setup
       - name: Prettier
-        run: pnpm prettier:check
+        run: bun run prettier:check
 
   eslint:
     name: Eslint
     runs-on: ubuntu-latest
     steps:
-      - name: Delete previous runs
-        uses: styfle/cancel-workflow-action@0.12.1
       - name: Checkout repo
         uses: actions/checkout@v4
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-      - name: Cache pnpm modules
-        uses: actions/cache@v4
-        with:
-          path: '~/.pnpm-store'
-          key: ${{ runner.os }}-
-      - uses: pnpm/action-setup@v3.0.0
-        with:
-          version: 8.3.1
-          run_install: true
+      - name: Setup
+        uses: ./gh-actions/setup
       - name: ESLint
-        run: pnpm lint
+        run: bun run lint
 
   typecheck:
     name: Typecheck
     runs-on: ubuntu-latest
     steps:
-      - name: Delete previous runs
-        uses: styfle/cancel-workflow-action@0.12.1
       - name: Checkout repo
         uses: actions/checkout@v4
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-      - name: Cache pnpm modules
-        uses: actions/cache@v4
-        with:
-          path: '~/.pnpm-store'
-          key: ${{ runner.os }}-
-      - uses: pnpm/action-setup@v3.0.0
-        with:
-          version: 8.3.1
-          run_install: true
+      - name: Setup
+        uses: ./gh-actions/setup
       - name: TypeScript
-        run: pnpm typecheck
+        run: bun run typecheck
   build:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.12.1
-      - name: Checkout Repo
+      - name: Checkout repo
         uses: actions/checkout@v4
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-      - name: Cache pnpm modules
-        uses: actions/cache@v4
-        with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-
-      - uses: pnpm/action-setup@v3.0.0
-        with:
-          version: 8.3.1
-          run_install: true
+      - name: Setup
+        uses: ./gh-actions/setup
       - name: Build
-        run: pnpm build
-  # preview:
-  #   name: Deploy preview
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Delete previous runs
-  #       uses: styfle/cancel-workflow-action@0.11.0
-  #     - name: Checkout repo
-  #       uses: actions/checkout@v3
-  #     - name: Use Node.js
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version: 16
-  #     - name: Cache pnpm modules
-  #       uses: actions/cache@v2
-  #       with:
-  #         path: '~/.pnpm-store'
-  #         key: ${{ runner.os }}-
-  #     - uses: pnpm/action-setup@v2.2.4
-  #       with:
-  #         version: 8.3.1
-  #         run_install: true
-  #     - name: Install Vercel CLI
-  #       run: pnpm install --global vercel@latest
-  #     - name: Pull Vercel Environment Information
-  #       run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
-  #     - name: Build Project Artifacts
-  #       run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
-  #     - name: Deploy Project Artifacts to Vercel
-  #       run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
+        run: bun run build
