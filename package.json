@@ -22,21 +22,21 @@
     "vercel-build": "NODE_ENV=production nuxt build"
   },
   "dependencies": {
-    "@headlessui/vue": "^1.7.19",
+    "@headlessui/vue": "^1.7.20",
     "@pinia/nuxt": "^0.5.1",
     "axios": "1.6.8",
     "hls.js": "^1.5.8",
-    "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "vue": "^3.4.23",
+    "vue-router": "^4.3.2"
   },
   "devDependencies": {
-    "@nuxt/devtools": "^1.1.5",
+    "@nuxt/devtools": "^1.2.0",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@nuxtjs/i18n": "8.3.0",
     "@tailwindcss/typography": "^0.5.12",
     "@types/node": "^20.12.7",
-    "@typescript-eslint/eslint-plugin": "^7.6.0",
-    "@typescript-eslint/parser": "^7.6.0",
+    "@typescript-eslint/eslint-plugin": "^7.7.0",
+    "@typescript-eslint/parser": "^7.7.0",
     "@vueuse/core": "^10.9.0",
     "@vueuse/nuxt": "^10.9.0",
     "autoprefixer": "^10.4.19",
@@ -54,7 +54,7 @@
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5",
     "vue-eslint-parser": "^9.4.2",
-    "vue-tsc": "^2.0.13"
+    "vue-tsc": "^2.0.14"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,vue}": [
