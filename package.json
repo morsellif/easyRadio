@@ -24,7 +24,7 @@
   "dependencies": {
     "@headlessui/vue": "^1.7.22",
     "@pinia/nuxt": "^0.5.4",
-    "axios": "1.7.3",
+    "axios": "1.7.4",
     "hls.js": "^1.5.14",
     "vue": "^3.4.38",
     "vue-router": "^4.4.3"
