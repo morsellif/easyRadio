@@ -30,7 +30,7 @@
     "vue-router": "^4.4.5"
   },
   "devDependencies": {
-    "@nuxt/devtools": "^1.6.0",
+    "@nuxt/devtools": "^2.1.1",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@nuxtjs/i18n": "8.5.5",
     "@tailwindcss/typography": "^0.5.15",
